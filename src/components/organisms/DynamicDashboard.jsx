@@ -144,7 +144,7 @@ export function DynamicDashboard() {
           className="refresh-button"
           title="Atualizar agora"
         >
-          🔄 Atualizar
+          Atualizar
         </button>
       </div>
 
