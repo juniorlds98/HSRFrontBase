@@ -74,6 +74,12 @@ input {
     padding: 0.45rem 0.85rem;
 }
 
+.btn-ghost:hover {
+    background: red;
+    color: white;
+    border-color: red;
+}
+
 .btn-danger {
     background: #ea4d5b;
     color: #fff;
@@ -129,6 +135,7 @@ input {
 
 .logo-badge {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 0.75rem;
 }
@@ -164,6 +171,8 @@ input {
 .login-panel h1 {
     font-size: clamp(1.6rem, 3vw, 2.1rem);
     margin-bottom: 0.35rem;
+    display: flex;
+    justify-content: center;
 }
 
 .login-subtitle {
@@ -225,7 +234,7 @@ input {
 }
 
 .brand-logo {
-    width: min(100%, 220px);
+    width: min(100%, 150px);
 }
 
 .top-menu {
@@ -239,7 +248,7 @@ input {
     text-decoration: none;
     color: #fff;
     font-weight: 500;
-    font-size: 0.82rem;
+    font-size: 0.95rem;
     padding: 0.45rem 0.65rem;
     border-radius: 9px;
     display: inline-flex;
@@ -497,7 +506,7 @@ input {
 .mini-chart {
     height: 168px;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 0.5rem;
 }
@@ -824,7 +833,8 @@ input {
 
 .screen-heading-row {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    margin-top: 20px;
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;

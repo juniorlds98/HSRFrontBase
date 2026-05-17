@@ -3,7 +3,7 @@ import { Button } from "../atoms/Button";
 import logo from "../../assets/images/logo-login.png";
 import searchIcon from "../../assets/icons/buscar.svg";
 import whatsappIcon from "../../assets/icons/whatsapp.svg";
-import supportIllustration from "../../assets/images/icone fundo transparente.png";
+import supportIllustration from "../../assets/icons/suport.svg";
 import { canAccessScreen } from "../../services/permissionService";
 
 const topMenuItems = [
