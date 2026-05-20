@@ -15,8 +15,8 @@ export function LoginForm({ onSubmit, loading }) {
     <form onSubmit={handleSubmit} className="login-form">
       <TextInput
         id="username"
-        label="UsuÃ¡rio"
-        placeholder="Digite seu usuÃ¡rio"
+        label="Usuário"
+        placeholder="Digite seu usuário"
         value={username}
         onChange={(event) => setUsername(event.target.value)}
         autoComplete="username"

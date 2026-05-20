@@ -7,10 +7,10 @@ import {
 import { canAccessScreen } from "../../services/permissionService";
 
 /**
- * Dashboard DinÃ¢mico
- * - Renderiza widgets configurÃ¡veis do backend
- * - ValidaÃ§Ã£o rigorosa de seguranÃ§a
- * - Auto-refresh configurÃ¡vel
+ * Dashboard Dinmico
+ * - Renderiza widgets configuraveis do backend
+ * - Validacao rigorosa de seguranca
+ * - Auto-refresh configuravel
  */
 export function DynamicDashboard() {
   const [widgets, setWidgets] = useState([]);
@@ -19,11 +19,11 @@ export function DynamicDashboard() {
   const [refreshInterval, setRefreshInterval] = useState(300000); // 5 min
   const [lastUpdated, setLastUpdated] = useState(null);
 
-  // Verificar permissÃ£o
+  // Verificar permissão
   const hasPermission = canAccessScreen("relatorio");
 
   /**
-   * Carrega configuraÃ§Ã£o do dashboard
+   * Carrega configuração do dashboard
    */
   const loadDashboard = useCallback(async () => {
     try {
@@ -38,7 +38,7 @@ export function DynamicDashboard() {
     } catch (err) {
       console.error("Erro ao carregar dashboard:", err);
       setError(
-        "NÃ£o foi possÃ­vel carregar o dashboard. Tente novamente em alguns momentos."
+        "Não foi possível carregar o dashboard. Tente novamente em alguns momentos."
       );
       setWidgets([]);
     } finally {
@@ -66,13 +66,13 @@ export function DynamicDashboard() {
     return () => clearInterval(interval);
   }, [refreshInterval, loadDashboard, hasPermission]);
 
-  // Sem permissÃ£o
+  // Sem permissão
   if (!hasPermission) {
     return (
       <div className="dynamic-dashboard restricted">
         <div className="restricted-message">
           <span>ðŸ”’</span>
-          <p>VocÃª nÃ£o tem permissÃ£o para acessar o dashboard dinÃ¢mico.</p>
+          <p>Você não tem permissão para acessar o dashboard dinâmico.</p>
         </div>
       </div>
     );
@@ -117,7 +117,7 @@ export function DynamicDashboard() {
     );
   }
 
-  // Agrupar widgets por linhas (mÃ¡x 3 por linha)
+  // Agrupar widgets por linhas (máx 3 por linha)
   const widgetRows = [];
   for (let i = 0; i < widgets.length; i += 3) {
     widgetRows.push(widgets.slice(i, i + 3));
@@ -126,9 +126,9 @@ export function DynamicDashboard() {
   return (
     <div className="dynamic-dashboard">
       <div className="dashboard-header">
-        <h2>Dashboard DinÃ¢mico</h2>
+        <h2>Dashboard Dinâmico</h2>
         {lastUpdated && (
-          <p className="last-updated">
+          <p className="last-updated">  
             Atualizado em:{" "}
             {new Date(lastUpdated).toLocaleString("pt-BR", {
               year: "numeric",

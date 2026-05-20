@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
     } catch (error) {
       const reason =
         error?.response?.data?.error_description ??
-        "Falha ao autenticar no Keycloak. Verifique usuÃ¡rio e senha.";
+        "Falha ao autenticar no Keycloak. Verifique usuário e senha.";
       return { ok: false, message: reason };
     } finally {
       setIsLoading(false);

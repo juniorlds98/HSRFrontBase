@@ -20,7 +20,7 @@ const SPECIALTIES = [
 ];
 
 const POSITIVE_TERMS = ["sim", "tenho", "quero", "gostaria", "ok", "claro", "s"];
-const NEGATIVE_TERMS = ["nao", "nÃ£o", "sem interesse", "agora nao", "agora nÃ£o", "n"];
+const NEGATIVE_TERMS = ["nao", "não", "sem interesse", "agora nao", "agora não", "n"];
 const SUSPICIOUS_PATTERN = /<\/?script|drop\s+table|truncate\s+table|--|\/\*/i;
 
 const STEP = {

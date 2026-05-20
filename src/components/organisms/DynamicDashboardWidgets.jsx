@@ -19,7 +19,7 @@ import {
 import { runNlp2SqlQuestion } from "../../services/dynamicDashboardService";
 
 /**
- * Cores seguras para grÃ¡ficos e cards
+ * Cores seguras para gráficos e cards
  */
 const SAFE_COLORS = [
   "#3498db",
@@ -113,7 +113,7 @@ function buildNlp2SqlInsights(columns, rows, insightsPlan = {}) {
 
   const preferredNumericColumns = columns.filter((column) => {
     const normalized = String(column).toLowerCase();
-    return /(total|count|qtd|quantidade|valor|score|media|mÃ©dia|percent)/.test(
+    return /(total|count|qtd|quantidade|valor|score|media|média|percent)/.test(
       normalized
     );
   });
@@ -139,7 +139,7 @@ function buildNlp2SqlInsights(columns, rows, insightsPlan = {}) {
 
   const preferredLabelColumn = columns.find((column) => {
     const normalized = String(column).toLowerCase();
-    return /(nome|procedimento|dia|mes|mÃªs|categoria|canal|status|etapa)/.test(
+    return /(nome|procedimento|dia|mes|mês|categoria|canal|status|etapa)/.test(
       normalized
     );
   });
@@ -215,7 +215,7 @@ function buildNlp2SqlInsights(columns, rows, insightsPlan = {}) {
       topItems: [],
       hasVisualData: false,
       explanation:
-        "NÃ£o foi possÃ­vel calcular agregaÃ§Ãµes para os campos selecionados. Tente outra mÃ©trica ou agregaÃ§Ã£o.",
+        "Não foi possível calcular agregações para os campos selecionados. Tente outra métrica ou agregação.",
     };
   }
 
@@ -238,7 +238,7 @@ function buildNlp2SqlInsights(columns, rows, insightsPlan = {}) {
 
   const explanation =
     (typeof insightsPlan?.explanation === "string" && insightsPlan.explanation.trim()) ||
-    `AnÃ¡lise automÃ¡tica: usamos "${labelColumn}" como dimensÃ£o, "${metricColumn}" como mÃ©trica e agregaÃ§Ã£o "${planAggregation}". Exibindo Top ${topItems.length} de ${series.length} categoria(s).`;
+    `Análise automática: usamos "${labelColumn}" como dimensão, "${metricColumn}" como métrica e agregação "${planAggregation}". Exibindo Top ${topItems.length} de ${series.length} categoria(s).`;
 
   const suggestedCharts = Array.isArray(insightsPlan?.suggested_charts)
     ? insightsPlan.suggested_charts
@@ -260,9 +260,9 @@ function buildNlp2SqlInsights(columns, rows, insightsPlan = {}) {
 }
 
 function getChartTitle(chartType, topN) {
-  if (chartType === "line") return `Top ${topN} em tendÃªncia`;
-  if (chartType === "area") return `Top ${topN} em Ã¡rea`;
-  if (chartType === "pie") return `Top ${topN} em participaÃ§Ã£o`;
+  if (chartType === "line") return `Top ${topN} em tendência`;
+  if (chartType === "area") return `Top ${topN} em área`;
+  if (chartType === "pie") return `Top ${topN} em participação`;
   return `Top ${topN} em barras`;
 }
 
@@ -336,7 +336,7 @@ function InsightAutoChart({ chartType, data, numericColumn }) {
 }
 
 /**
- * Widget de MÃ©trica (valor com tendÃªncia)
+ * Widget de Métrica (valor com tendência)
  */
 export function MetricWidget({ data, title, subtitle }) {
   if (!data || typeof data.value !== "string") return null;
@@ -369,7 +369,7 @@ export function MetricWidget({ data, title, subtitle }) {
 }
 
 /**
- * Widget de GrÃ¡fico (bar, line, pie, area)
+ * Widget de Gráfico (bar, line, pie, area)
  */
 export function ChartWidget({ data, title, subtitle }) {
   if (!data || !data.dataPoints || data.dataPoints.length === 0) return null;
@@ -555,11 +555,11 @@ function ColumnSelector({
   return (
     <div className="nlp2sql-column-selector">
       <label>
-        <span title="DimensÃ£o: campo usado para categorizar os dados (ex.: mÃ©dico, mÃªs, status).">
-          DimensÃ£o
+        <span title="Dimensão: campo usado para categorizar os dados (ex.: médico, mês, status).">
+          Dimensão
         </span>
         <select value={labelField} onChange={(event) => onChange("labelField", event.target.value)}>
-          <option value="">AutomÃ¡tico</option>
+          <option value="">Automático</option>
           {columns.map((col) => (
             <option key={`label-${col}`} value={col}>
               {col}
@@ -568,11 +568,11 @@ function ColumnSelector({
         </select>
       </label>
       <label>
-        <span title="MÃ©trica: campo usado para calcular valores (ex.: quantidade, valor, id_paciente).">
-          MÃ©trica
+        <span title="Métrica: campo usado para calcular valores (ex.: quantidade, valor, id_paciente).">
+          Métrica
         </span>
         <select value={metricField} onChange={(event) => onChange("metricField", event.target.value)}>
-          <option value="">AutomÃ¡tico</option>
+          <option value="">Automático</option>
           {columns.map((col) => (
             <option key={`metric-${col}`} value={col}>
               {col}
@@ -581,15 +581,15 @@ function ColumnSelector({
         </select>
       </label>
       <label>
-        <span title="AgregaÃ§Ã£o: como calcular o total da mÃ©trica selecionada.">
-          AgregaÃ§Ã£o
+        <span title="Agregação: como calcular o total da métrica selecionada.">
+          Agregação
         </span>
         <select value={aggregation} onChange={(event) => onChange("aggregation", event.target.value)}>
           <option value="distinct_count">Contagem distinta</option>
           <option value="count">Contagem</option>
-          <option value="frequency">FrequÃªncia</option>
+          <option value="frequency">Frequência</option>
           <option value="sum">Soma</option>
-          <option value="avg">MÃ©dia</option>
+          <option value="avg">Média</option>
         </select>
       </label>
     </div>
@@ -600,7 +600,7 @@ function formatAggregationValue(value, metricField, aggregation) {
   if (!Number.isFinite(value)) return "-";
 
   const normalized = String(metricField || "").toLowerCase();
-  const isMoneyMetric = /(valor|preco|preÃ§o|custo|receita|faturamento|ticket|mensalidade|mensal|orcamento|orÃ§amento|saldo|pagamento|pagamentos)/.test(normalized);
+  const isMoneyMetric = /(valor|preco|preço|custo|receita|faturamento|ticket|mensalidade|mensal|orcamento|orçamento|saldo|pagamento|pagamentos)/.test(normalized);
 
   if (isMoneyMetric && (aggregation === "sum" || aggregation === "avg")) {
     return new Intl.NumberFormat("pt-BR", {
@@ -620,7 +620,7 @@ function formatAggregationValue(value, metricField, aggregation) {
 
 function computeAggregation(rows, metricField, aggregation) {
   if (!Array.isArray(rows) || rows.length === 0 || !metricField) {
-    return { label: "Sem dados para agregaÃ§Ã£o", value: "-" };
+    return { label: "Sem dados para agregação", value: "-" };
   }
 
   const values = rows
@@ -628,7 +628,7 @@ function computeAggregation(rows, metricField, aggregation) {
     .filter((value) => value !== null && value !== undefined && String(value).trim() !== "");
 
   if (values.length === 0) {
-    return { label: `Sem valores vÃ¡lidos em ${metricField}`, value: "-" };
+    return { label: `Sem valores válidos em ${metricField}`, value: "-" };
   }
 
   if (aggregation === "count") {
@@ -640,7 +640,7 @@ function computeAggregation(rows, metricField, aggregation) {
 
   if (aggregation === "frequency") {
     return {
-      label: `FrequÃªncia de ${metricField}`,
+      label: `Frequência de ${metricField}`,
       value: formatAggregationValue(values.length, metricField, aggregation),
     };
   }
@@ -658,14 +658,14 @@ function computeAggregation(rows, metricField, aggregation) {
     .filter((value) => Number.isFinite(value));
 
   if (numericValues.length === 0) {
-    return { label: `MÃ©trica ${metricField} nÃ£o Ã© numÃ©rica`, value: "-" };
+    return { label: `Métrica ${metricField} não é numérica`, value: "-" };
   }
 
   const sum = numericValues.reduce((acc, current) => acc + current, 0);
   if (aggregation === "avg") {
     const avg = sum / numericValues.length;
     return {
-      label: `MÃ©dia de ${metricField}`,
+      label: `Média de ${metricField}`,
       value: formatAggregationValue(avg, metricField, aggregation),
     };
   }
@@ -865,7 +865,7 @@ export function Nlp2SqlWidget({ data, title, subtitle }) {
       ) : null}
 
       {data?.enabled === false && (
-        <p className="nlp2sql-guardrail">MÃ³dulo NLP2SQL estÃ¡ desativado no backend.</p>
+        <p className="nlp2sql-guardrail">Módulo NLP2SQL está desativado no backend.</p>
       )}
 
       {result && (
@@ -927,7 +927,7 @@ export function Nlp2SqlWidget({ data, title, subtitle }) {
 
           {insights.hasVisualData && (
             <div className="nlp2sql-insights">
-              <h4>CorrelaÃ§Ãµes visuais automÃ¡ticas</h4>
+              <h4>Correlações visuais automáticas</h4>
               {insights.explanation ? (
                 <div className="nlp2sql-insight-alert" role="alert">
                   {insights.explanation}

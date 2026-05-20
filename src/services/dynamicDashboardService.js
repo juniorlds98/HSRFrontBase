@@ -1,8 +1,8 @@
 ﻿import { httpClient } from "./httpClient";
 
 /**
- * ConfiguraÃ§Ã£o segura para dashboard dinÃ¢mico
- * ValidaÃ§Ã£o rigorosa de dados do backend
+ * Configuração segura para dashboard dinâmico
+ * Validação rigorosa de dados do backend
  */
 
 const WIDGET_TYPES = {
@@ -16,7 +16,7 @@ const WIDGET_TYPES = {
 const CHART_TYPES = ["bar", "line", "pie", "area"];
 
 /**
- * Valida se um valor Ã© um nÃºmero vÃ¡lido (nÃºmero real ou porcentagem)
+ * Valida se um valor é um número válido (número real ou porcentagem)
  */
 function isValidNumber(value) {
   const num = Number(value);
@@ -28,74 +28,74 @@ function isValidNumber(value) {
  */
 function validateWidget(widget) {
   if (!widget || typeof widget !== "object") {
-    console.warn("Widget invÃ¡lido: nÃ£o Ã© um objeto");
+    console.warn("Widget inválido: não é um objeto");
     return false;
   }
 
   const { id, type, title, data } = widget;
 
-  // Validar campo obrigatÃ³rios
+  // Validar campos obrigatórios
   if (!id || typeof id !== "string") {
-    console.warn("Widget sem ID vÃ¡lido");
+    console.warn("Widget sem ID válido");
     return false;
   }
 
   if (!type || !Object.values(WIDGET_TYPES).includes(type)) {
-    console.warn(`Widget ${id}: tipo invÃ¡lido (${type})`);
+    console.warn(`Widget ${id}: tipo inválido (${type})`);
     return false;
   }
 
   if (!title || typeof title !== "string") {
-    console.warn(`Widget ${id}: tÃ­tulo invÃ¡lido`);
+    console.warn(`Widget ${id}: título inválido`);
     return false;
   }
 
-  // Validar dados especÃ­ficos por tipo
+  // Validar dados específicos por tipo
   switch (type) {
     case WIDGET_TYPES.METRIC:
       if (!isValidNumber(data?.value)) {
-        console.warn(`Widget ${id}: value nÃ£o Ã© nÃºmero`);
+        console.warn(`Widget ${id}: value não é número`);
         return false;
       }
       break;
 
     case WIDGET_TYPES.CHART:
       if (!data?.chartType || !CHART_TYPES.includes(data.chartType)) {
-        console.warn(`Widget ${id}: chartType invÃ¡lido`);
+        console.warn(`Widget ${id}: chartType inválido`);
         return false;
       }
       if (!Array.isArray(data?.dataPoints) || data.dataPoints.length === 0) {
-        console.warn(`Widget ${id}: dataPoints deve ser array nÃ£o-vazio`);
+        console.warn(`Widget ${id}: dataPoints deve ser array não-vazio`);
         return false;
       }
       // Validar cada ponto de dados
       if (!data.dataPoints.every((point) => validateChartDataPoint(point))) {
-        console.warn(`Widget ${id}: dataPoints contÃ©m valores invÃ¡lidos`);
+        console.warn(`Widget ${id}: dataPoints contém valores inválidos`);
         return false;
       }
       break;
 
     case WIDGET_TYPES.TABLE:
       if (!Array.isArray(data?.rows) || data.rows.length === 0) {
-        console.warn(`Widget ${id}: rows deve ser array nÃ£o-vazio`);
+        console.warn(`Widget ${id}: rows deve ser array não-vazio`);
         return false;
       }
       if (!Array.isArray(data?.columns) || data.columns.length === 0) {
-        console.warn(`Widget ${id}: columns deve ser array nÃ£o-vazio`);
+        console.warn(`Widget ${id}: columns deve ser array não-vazio`);
         return false;
       }
       break;
 
     case WIDGET_TYPES.CARD:
       if (!data || typeof data !== "object") {
-        console.warn(`Widget ${id}: data invÃ¡lida para card`);
+        console.warn(`Widget ${id}: data inválida para card`);
         return false;
       }
       break;
 
     case WIDGET_TYPES.NLP2SQL:
       if (!data || typeof data !== "object") {
-        console.warn(`Widget ${id}: data invÃ¡lida para nlp2sql`);
+        console.warn(`Widget ${id}: data inválida para nlp2sql`);
         return false;
       }
       break;
@@ -105,7 +105,7 @@ function validateWidget(widget) {
 }
 
 /**
- * Valida um ponto de dados de grÃ¡fico
+ * Valida um ponto de dados de gráfico
  */
 function validateChartDataPoint(point) {
   if (!point || typeof point !== "object") return false;
@@ -129,7 +129,7 @@ function sanitizeString(str) {
 }
 
 /**
- * Processa widget apÃ³s validaÃ§Ã£o
+ * Processa widget após validação
  */
 function processWidget(widget) {
   return {
@@ -142,7 +142,7 @@ function processWidget(widget) {
 }
 
 /**
- * Processa dados especÃ­ficos do widget
+ * Processa dados específicos do widget
  */
 function processWidgetData(type, data) {
   if (!data) return {};
@@ -211,7 +211,7 @@ function processWidgetData(type, data) {
 }
 
 /**
- * Valida se uma cor Ã© formato vÃ¡lido
+ * Valida se uma cor é formato válido
  */
 function isValidColor(color) {
   if (!color || typeof color !== "string") return false;
@@ -220,7 +220,7 @@ function isValidColor(color) {
 }
 
 /**
- * Busca configuraÃ§Ã£o do dashboard dinÃ¢mico
+ * Busca configuração do dashboard dinâmico
  */
 export async function fetchDynamicDashboardConfig() {
   try {
@@ -230,7 +230,7 @@ export async function fetchDynamicDashboardConfig() {
     const payload = response?.data;
 
     if (!payload || !Array.isArray(payload.widgets)) {
-      console.warn("Resposta invÃ¡lida do backend");
+      console.warn("Resposta inválida do backend");
       return { widgets: [], meta: {} };
     }
 
@@ -245,11 +245,11 @@ export async function fetchDynamicDashboardConfig() {
         lastUpdated: payload.lastUpdated || new Date().toISOString(),
         refreshInterval: isValidNumber(payload.refreshInterval)
           ? Number(payload.refreshInterval)
-          : 300000, // 5 min padrÃ£o
+          : 300000, // 5 min padrão
       },
     };
   } catch (error) {
-    console.error("Erro ao buscar configuraÃ§Ã£o do dashboard:", error);
+    console.error("Erro ao buscar configuração do dashboard:", error);
     return { widgets: [], meta: { refreshInterval: 300000 } };
   }
 }
@@ -308,12 +308,12 @@ export async function runNlp2SqlQuestion(question) {
     console.error("Erro ao executar NLP2SQL:", error);
     return {
       success: false,
-      answer: "NÃ£o foi possÃ­vel processar a pergunta agora.",
+      answer: "Não foi possível processar a pergunta agora.",
       generatedSql: "",
       columns: [],
       rows: [],
       rowCount: 0,
-      guardrail: { blocked: false, reason: "Falha de integraÃ§Ã£o" },
+      guardrail: { blocked: false, reason: "Falha de integração" },
     };
   }
 }
@@ -329,10 +329,10 @@ export async function askNlp2Sql(question) {
     if (response.success) {
       return response;
     } else {
-      console.warn("Pergunta invÃ¡lida para NLP2SQL:", response);
+      console.warn("Pergunta inválida para NLP2SQL:", response);
       return {
         error: true,
-        message: "Pergunta invÃ¡lida para NLP2SQL. Tente reformular a pergunta ou seja mais especÃ­fico.",
+        message: "Pergunta inválida para NLP2SQL. Tente reformular a pergunta ou seja mais específico.",
         generated_sql: response.generated_sql || "",
       };
     }
@@ -340,7 +340,7 @@ export async function askNlp2Sql(question) {
     console.error("Erro ao consultar NLP2SQL:", error);
     return {
       error: true,
-      message: "Erro ao processar a pergunta. Verifique a conexÃ£o ou tente novamente.",
+      message: "Erro ao processar a pergunta. Verifique a conexão ou tente novamente.",
       generated_sql: "",
     };
   }

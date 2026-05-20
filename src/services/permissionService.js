@@ -1,11 +1,11 @@
 ﻿/**
- * ServiÃ§o de PermissÃµes
+ * Serviço de Permissões
  * Gerencia acesso a funcionalidades baseado em roles do Keycloak
  */
 
 import { getAccessToken } from "../features/auth/authStorage";
 
-// Mapeamento de telas para roles necessÃ¡rias
+// Mapeamento de telas para roles necessárias
 const SCREEN_PERMISSIONS = {
   financeiro: ['ROLE_ADMIN', 'ROLE_FINANCEIRO'],
   relatorio: ['ROLE_ADMIN', 'ROLE_RELATORIO', 'ROLE_USER'],
@@ -36,8 +36,8 @@ function getCanonicalRoles(role) {
 }
 
 /**
- * ObtÃ©m as roles do usuÃ¡rio a partir do token JWT do Keycloak
- * @returns {string[]} Array com roles do usuÃ¡rio
+ * Obtém as roles do usuário a partir do token JWT do Keycloak
+ * @returns {string[]} Array com roles do usuário
  */
 export function getUserRoles() {
   try {
@@ -59,7 +59,7 @@ export function getUserRoles() {
 }
 
 /**
- * Verifica se o usuÃ¡rio possui uma role especÃ­fica
+ * Verifica se o usuário possui uma role específica
  * @param {string} role - Role a verificar
  * @returns {boolean}
  */
@@ -75,7 +75,7 @@ export function hasRole(role) {
 }
 
 /**
- * Verifica se o usuÃ¡rio possui alguma das roles fornecidas
+ * Verifica se o usuário possui alguma das roles fornecidas
  * @param {string[]} roles - Array de roles
  * @returns {boolean}
  */
@@ -85,26 +85,26 @@ export function hasAnyRole(roles) {
 }
 
 /**
- * Verifica se o usuÃ¡rio tem acesso a uma tela especÃ­fica
- * @param {string} screenCode - CÃ³digo da tela (ex: 'financeiro', 'relatorio', 'servicos')
+ * Verifica se o usuário tem acesso a uma tela específica
+ * @param {string} screenCode - Código da tela (ex: 'financeiro', 'relatorio', 'servicos')
  * @returns {boolean}
  */
 export function canAccessScreen(screenCode) {
   const requiredRoles = SCREEN_PERMISSIONS[screenCode];
-  if (!requiredRoles) return true; // Se nÃ£o hÃ¡ restriÃ§Ã£o definida, permite acesso
+  if (!requiredRoles) return true; // Se não há restrição definida, permite acesso
   return hasAnyRole(requiredRoles);
 }
 
 /**
- * ObtÃ©m a lista de telas que o usuÃ¡rio pode acessar
- * @returns {string[]} Array com cÃ³digos das telas acessÃ­veis
+ * Obtém a lista de telas que o usuário pode acessar
+ * @returns {string[]} Array com códigos das telas acessíveis
  */
 export function getAccessibleScreens() {
   return Object.keys(SCREEN_PERMISSIONS).filter(screen => canAccessScreen(screen));
 }
 
 /**
- * Verifica se o usuÃ¡rio Ã© admin (possui ROLE_ADMIN)
+ * Verifica se o usuário é admin (possui ROLE_ADMIN)
  * @returns {boolean}
  */
 export function isAdmin() {
@@ -112,8 +112,8 @@ export function isAdmin() {
 }
 
 /**
- * ObtÃ©m informaÃ§Ãµes do usuÃ¡rio do token
- * @returns {object} Objeto com informaÃ§Ãµes do usuÃ¡rio
+ * Obtém informações do usuário do token
+ * @returns {object} Objeto com informações do usuário
  */
 export function getUserInfo() {
   try {
@@ -129,7 +129,7 @@ export function getUserInfo() {
       isAdmin: isAdmin(),
     };
   } catch (error) {
-    console.warn('Erro ao extrair informaÃ§Ãµes do usuÃ¡rio:', error);
+    console.warn('Erro ao extrair informações do usuário:', error);
     return {};
   }
 }
