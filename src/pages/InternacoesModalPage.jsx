@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AddInternacaoModal } from "../components/organisms/AddInternacaoModal";
 import { InternacoesTable } from "../components/organisms/InternacoesTable";
@@ -64,7 +64,7 @@ export function InternacoesModalPage() {
       setInternacoes((c) => [mapInternacaoToRow(created), ...c]);
       navigate("/internacoes", { replace: true });
     } catch (err) {
-      setSubmitError(err?.message || "Nao foi possivel registrar a internacao.");
+      setSubmitError(err?.message || "Não foi possível registrar a internacao.");
     } finally {
       setIsSubmitting(false);
     }
@@ -74,7 +74,7 @@ export function InternacoesModalPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="gestao"
       activeSidebar="internacoes"
@@ -92,3 +92,5 @@ export function InternacoesModalPage() {
     </DashboardTemplate>
   );
 }
+
+

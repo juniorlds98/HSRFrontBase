@@ -1,4 +1,4 @@
-const ACCESS_TOKEN_KEY = "hsr_access_token";
+﻿const ACCESS_TOKEN_KEY = "hsr_access_token";
 const REFRESH_TOKEN_KEY = "hsr_refresh_token";
 const USER_KEY = "hsr_user";
 
@@ -38,3 +38,4 @@ export function clearAuthStorage() {
   localStorage.removeItem(REFRESH_TOKEN_KEY);
   localStorage.removeItem(USER_KEY);
 }
+

@@ -1,8 +1,8 @@
-function asArray(value) {
+﻿function asArray(value) {
   return Array.isArray(value) ? value : [];
 }
 
-function normalizeLabel(raw, fallback = "Nao informado") {
+function normalizeLabel(raw, fallback = "Não informado") {
   if (!raw) {
     return fallback;
   }
@@ -71,3 +71,5 @@ export function mapDashboardMetrics(rawData) {
     monthlyAttendances: mapMonthlyAttendances(atendimentos),
   };
 }
+
+

@@ -1,4 +1,4 @@
-import { httpClient } from "./httpClient";
+﻿import { httpClient } from "./httpClient";
 import { buildDateQueryParams } from "../utils/analyticsFormatters";
 
 const REPORT_FILES_STORAGE_KEY = "hsr_reports_files_local";
@@ -81,7 +81,7 @@ export async function downloadCsvReport(kind, { fromDate, toDate }) {
       fileName,
     };
   } catch (error) {
-    throw new Error(getErrorMessage(error, "Nao foi possivel gerar o CSV no backend."));
+    throw new Error(getErrorMessage(error, "Não foi possível gerar o CSV no backend."));
   }
 }
 
@@ -99,7 +99,7 @@ export async function fetchHostedFiles() {
       return local.map((item, index) => normalizeFileItem({ ...item, source: "local" }, index));
     }
 
-    throw new Error(getErrorMessage(error, "Nao foi possivel listar arquivos hospedados."));
+    throw new Error(getErrorMessage(error, "Não foi possível listar arquivos hospedados."));
   }
 }
 
@@ -167,6 +167,7 @@ export async function downloadHostedFile(fileItem) {
       fileName: extractFileName(response?.headers?.["content-disposition"], fileItem?.name ?? "arquivo"),
     };
   } catch (error) {
-    throw new Error(getErrorMessage(error, "Nao foi possivel baixar o arquivo selecionado."));
+    throw new Error(getErrorMessage(error, "Não foi possível baixar o arquivo selecionado."));
   }
 }
+

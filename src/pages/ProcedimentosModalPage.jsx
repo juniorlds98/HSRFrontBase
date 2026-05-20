@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AddProcedimentoModal } from "../components/organisms/AddProcedimentoModal";
 import { ProcedimentosTable } from "../components/organisms/ProcedimentosTable";
@@ -50,7 +50,7 @@ export function ProcedimentosModalPage() {
       setProcedimentos((c) => [mapProcedimentoToRow(created), ...c]);
       navigate("/procedimentos", { replace: true });
     } catch (err) {
-      setSubmitError(err?.message || "Nao foi possivel cadastrar o procedimento.");
+      setSubmitError(err?.message || "Não foi possível cadastrar o procedimento.");
     } finally {
       setIsSubmitting(false);
     }
@@ -60,7 +60,7 @@ export function ProcedimentosModalPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="gestao"
       activeSidebar="procedimentos"
@@ -78,3 +78,5 @@ export function ProcedimentosModalPage() {
     </DashboardTemplate>
   );
 }
+
+

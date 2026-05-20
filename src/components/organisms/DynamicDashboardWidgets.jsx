@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import {
   BarChart,
   Bar,
@@ -19,7 +19,7 @@ import {
 import { runNlp2SqlQuestion } from "../../services/dynamicDashboardService";
 
 /**
- * Cores seguras para gráficos e cards
+ * Cores seguras para grÃ¡ficos e cards
  */
 const SAFE_COLORS = [
   "#3498db",
@@ -30,6 +30,57 @@ const SAFE_COLORS = [
   "#1abc9c",
   "#34495e",
 ];
+
+const NLP2SQL_COMMON_QUERIES_KEY = "hsr_nlp2sql_common_queries";
+const NLP2SQL_MAX_COMMON_QUERIES = 10;
+
+function escapeCsvCell(value) {
+  if (value === null || value === undefined) return "";
+  const normalized = String(value).replace(/\r?\n/g, " ");
+  if (/[",;]/.test(normalized)) {
+    return `"${normalized.replace(/"/g, '""')}"`;
+  }
+  return normalized;
+}
+
+function buildCsvContent(columns, rows) {
+  const safeColumns = Array.isArray(columns) ? columns : [];
+  const safeRows = Array.isArray(rows) ? rows : [];
+
+  if (safeColumns.length === 0) return "";
+
+  const header = safeColumns.map((column) => escapeCsvCell(column)).join(";");
+  const body = safeRows.map((row) => {
+    return safeColumns
+      .map((column) => escapeCsvCell(row?.[column] ?? ""))
+      .join(";");
+  });
+
+  return [header, ...body].join("\n");
+}
+
+function getStoredCommonQueries() {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(NLP2SQL_COMMON_QUERIES_KEY);
+    const parsed = JSON.parse(raw || "[]");
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .map((item) => String(item || "").trim())
+      .filter((item) => item.length > 0)
+      .slice(0, NLP2SQL_MAX_COMMON_QUERIES);
+  } catch {
+    return [];
+  }
+}
+
+function saveCommonQueries(queries) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(
+    NLP2SQL_COMMON_QUERIES_KEY,
+    JSON.stringify(queries.slice(0, NLP2SQL_MAX_COMMON_QUERIES))
+  );
+}
 
 function parseNumericValue(value) {
   if (typeof value === "number" && Number.isFinite(value)) return value;
@@ -62,7 +113,7 @@ function buildNlp2SqlInsights(columns, rows, insightsPlan = {}) {
 
   const preferredNumericColumns = columns.filter((column) => {
     const normalized = String(column).toLowerCase();
-    return /(total|count|qtd|quantidade|valor|score|media|média|percent)/.test(
+    return /(total|count|qtd|quantidade|valor|score|media|mÃ©dia|percent)/.test(
       normalized
     );
   });
@@ -88,7 +139,7 @@ function buildNlp2SqlInsights(columns, rows, insightsPlan = {}) {
 
   const preferredLabelColumn = columns.find((column) => {
     const normalized = String(column).toLowerCase();
-    return /(nome|procedimento|dia|mes|mês|categoria|canal|status|etapa)/.test(
+    return /(nome|procedimento|dia|mes|mÃªs|categoria|canal|status|etapa)/.test(
       normalized
     );
   });
@@ -164,7 +215,7 @@ function buildNlp2SqlInsights(columns, rows, insightsPlan = {}) {
       topItems: [],
       hasVisualData: false,
       explanation:
-        "Não foi possível calcular agregações para os campos selecionados. Tente outra métrica ou agregação.",
+        "NÃ£o foi possÃ­vel calcular agregaÃ§Ãµes para os campos selecionados. Tente outra mÃ©trica ou agregaÃ§Ã£o.",
     };
   }
 
@@ -187,7 +238,7 @@ function buildNlp2SqlInsights(columns, rows, insightsPlan = {}) {
 
   const explanation =
     (typeof insightsPlan?.explanation === "string" && insightsPlan.explanation.trim()) ||
-    `Análise automática: usamos "${labelColumn}" como dimensão, "${metricColumn}" como métrica e agregação "${planAggregation}". Exibindo Top ${topItems.length} de ${series.length} categoria(s).`;
+    `AnÃ¡lise automÃ¡tica: usamos "${labelColumn}" como dimensÃ£o, "${metricColumn}" como mÃ©trica e agregaÃ§Ã£o "${planAggregation}". Exibindo Top ${topItems.length} de ${series.length} categoria(s).`;
 
   const suggestedCharts = Array.isArray(insightsPlan?.suggested_charts)
     ? insightsPlan.suggested_charts
@@ -209,9 +260,9 @@ function buildNlp2SqlInsights(columns, rows, insightsPlan = {}) {
 }
 
 function getChartTitle(chartType, topN) {
-  if (chartType === "line") return `Top ${topN} em tendência`;
-  if (chartType === "area") return `Top ${topN} em área`;
-  if (chartType === "pie") return `Top ${topN} em participação`;
+  if (chartType === "line") return `Top ${topN} em tendÃªncia`;
+  if (chartType === "area") return `Top ${topN} em Ã¡rea`;
+  if (chartType === "pie") return `Top ${topN} em participaÃ§Ã£o`;
   return `Top ${topN} em barras`;
 }
 
@@ -285,7 +336,7 @@ function InsightAutoChart({ chartType, data, numericColumn }) {
 }
 
 /**
- * Widget de Métrica (valor com tendência)
+ * Widget de MÃ©trica (valor com tendÃªncia)
  */
 export function MetricWidget({ data, title, subtitle }) {
   if (!data || typeof data.value !== "string") return null;
@@ -306,7 +357,7 @@ export function MetricWidget({ data, title, subtitle }) {
       </div>
       {trend !== 0 && (
         <div className={`metric-trend ${isPositive ? "positive" : "negative"}`}>
-          <span className="trend-arrow">{isPositive ? "↑" : "↓"}</span>
+          <span className="trend-arrow">{isPositive ? "â†‘" : "â†“"}</span>
           <span className="trend-value">{Math.abs(trend)}%</span>
           {data.trendLabel && (
             <span className="trend-label">{data.trendLabel}</span>
@@ -318,7 +369,7 @@ export function MetricWidget({ data, title, subtitle }) {
 }
 
 /**
- * Widget de Gráfico (bar, line, pie, area)
+ * Widget de GrÃ¡fico (bar, line, pie, area)
  */
 export function ChartWidget({ data, title, subtitle }) {
   if (!data || !data.dataPoints || data.dataPoints.length === 0) return null;
@@ -504,11 +555,11 @@ function ColumnSelector({
   return (
     <div className="nlp2sql-column-selector">
       <label>
-        <span title="Dimensão: campo usado para categorizar os dados (ex.: médico, mês, status).">
-          Dimensão
+        <span title="DimensÃ£o: campo usado para categorizar os dados (ex.: mÃ©dico, mÃªs, status).">
+          DimensÃ£o
         </span>
         <select value={labelField} onChange={(event) => onChange("labelField", event.target.value)}>
-          <option value="">Automático</option>
+          <option value="">AutomÃ¡tico</option>
           {columns.map((col) => (
             <option key={`label-${col}`} value={col}>
               {col}
@@ -517,11 +568,11 @@ function ColumnSelector({
         </select>
       </label>
       <label>
-        <span title="Métrica: campo usado para calcular valores (ex.: quantidade, valor, id_paciente).">
-          Métrica
+        <span title="MÃ©trica: campo usado para calcular valores (ex.: quantidade, valor, id_paciente).">
+          MÃ©trica
         </span>
         <select value={metricField} onChange={(event) => onChange("metricField", event.target.value)}>
-          <option value="">Automático</option>
+          <option value="">AutomÃ¡tico</option>
           {columns.map((col) => (
             <option key={`metric-${col}`} value={col}>
               {col}
@@ -530,15 +581,15 @@ function ColumnSelector({
         </select>
       </label>
       <label>
-        <span title="Agregação: como calcular o total da métrica selecionada.">
-          Agregação
+        <span title="AgregaÃ§Ã£o: como calcular o total da mÃ©trica selecionada.">
+          AgregaÃ§Ã£o
         </span>
         <select value={aggregation} onChange={(event) => onChange("aggregation", event.target.value)}>
           <option value="distinct_count">Contagem distinta</option>
           <option value="count">Contagem</option>
-          <option value="frequency">Frequência</option>
+          <option value="frequency">FrequÃªncia</option>
           <option value="sum">Soma</option>
-          <option value="avg">Média</option>
+          <option value="avg">MÃ©dia</option>
         </select>
       </label>
     </div>
@@ -549,7 +600,7 @@ function formatAggregationValue(value, metricField, aggregation) {
   if (!Number.isFinite(value)) return "-";
 
   const normalized = String(metricField || "").toLowerCase();
-  const isMoneyMetric = /(valor|preco|preço|custo|receita|faturamento|ticket|mensalidade|mensal|orcamento|orçamento|saldo|pagamento|pagamentos)/.test(normalized);
+  const isMoneyMetric = /(valor|preco|preÃ§o|custo|receita|faturamento|ticket|mensalidade|mensal|orcamento|orÃ§amento|saldo|pagamento|pagamentos)/.test(normalized);
 
   if (isMoneyMetric && (aggregation === "sum" || aggregation === "avg")) {
     return new Intl.NumberFormat("pt-BR", {
@@ -569,7 +620,7 @@ function formatAggregationValue(value, metricField, aggregation) {
 
 function computeAggregation(rows, metricField, aggregation) {
   if (!Array.isArray(rows) || rows.length === 0 || !metricField) {
-    return { label: "Sem dados para agregação", value: "-" };
+    return { label: "Sem dados para agregaÃ§Ã£o", value: "-" };
   }
 
   const values = rows
@@ -577,7 +628,7 @@ function computeAggregation(rows, metricField, aggregation) {
     .filter((value) => value !== null && value !== undefined && String(value).trim() !== "");
 
   if (values.length === 0) {
-    return { label: `Sem valores válidos em ${metricField}`, value: "-" };
+    return { label: `Sem valores vÃ¡lidos em ${metricField}`, value: "-" };
   }
 
   if (aggregation === "count") {
@@ -589,7 +640,7 @@ function computeAggregation(rows, metricField, aggregation) {
 
   if (aggregation === "frequency") {
     return {
-      label: `Frequência de ${metricField}`,
+      label: `FrequÃªncia de ${metricField}`,
       value: formatAggregationValue(values.length, metricField, aggregation),
     };
   }
@@ -607,14 +658,14 @@ function computeAggregation(rows, metricField, aggregation) {
     .filter((value) => Number.isFinite(value));
 
   if (numericValues.length === 0) {
-    return { label: `Métrica ${metricField} não é numérica`, value: "-" };
+    return { label: `MÃ©trica ${metricField} nÃ£o Ã© numÃ©rica`, value: "-" };
   }
 
   const sum = numericValues.reduce((acc, current) => acc + current, 0);
   if (aggregation === "avg") {
     const avg = sum / numericValues.length;
     return {
-      label: `Média de ${metricField}`,
+      label: `MÃ©dia de ${metricField}`,
       value: formatAggregationValue(avg, metricField, aggregation),
     };
   }
@@ -629,6 +680,9 @@ export function Nlp2SqlWidget({ data, title, subtitle }) {
   const [question, setQuestion] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
   const [result, setResult] = React.useState(null);
+  const [lastSubmittedQuestion, setLastSubmittedQuestion] = React.useState("");
+  const [commonQueries, setCommonQueries] = React.useState(() => getStoredCommonQueries());
+  const [actionFeedback, setActionFeedback] = React.useState("");
   const [manualSelection, setManualSelection] = React.useState({
     labelField: "",
     metricField: "",
@@ -656,15 +710,73 @@ export function Nlp2SqlWidget({ data, title, subtitle }) {
     return ["bar", "pie"];
   }, [insights]);
 
+  const canExportCsv =
+    Array.isArray(result?.columns) &&
+    result.columns.length > 0 &&
+    Array.isArray(result?.rows) &&
+    result.rows.length > 0;
+
+  React.useEffect(() => {
+    if (!actionFeedback) return undefined;
+    const timer = window.setTimeout(() => setActionFeedback(""), 2500);
+    return () => window.clearTimeout(timer);
+  }, [actionFeedback]);
+
   async function handleSubmit(event) {
     event.preventDefault();
-    if (!question.trim()) return;
+    const trimmedQuestion = question.trim();
+    if (!trimmedQuestion) return;
 
     setIsLoading(true);
-    const response = await runNlp2SqlQuestion(question);
+    const response = await runNlp2SqlQuestion(trimmedQuestion);
     setResult(response);
+    setLastSubmittedQuestion(trimmedQuestion);
     setManualSelection({ labelField: "", metricField: "", aggregation: "distinct_count" });
     setIsLoading(false);
+  }
+
+  function handleExportCsv() {
+    if (!canExportCsv) {
+      setActionFeedback("Nenhum dado para exportar.");
+      return;
+    }
+
+    const csvContent = buildCsvContent(result.columns, result.rows);
+    if (!csvContent) {
+      setActionFeedback("Nenhum dado para exportar.");
+      return;
+    }
+
+    const blob = new Blob([`\uFEFF${csvContent}`], {
+      type: "text/csv;charset=utf-8;",
+    });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `nlp2sql_${new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-")}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+    setActionFeedback("CSV gerado com sucesso.");
+  }
+
+  function handleSaveCommonQuery() {
+    const candidate = (question.trim() || lastSubmittedQuestion || "").trim();
+    if (!candidate) {
+      setActionFeedback("Digite ou execute uma consulta para salvar.");
+      return;
+    }
+
+    setCommonQueries((current) => {
+      const next = [candidate, ...current.filter((item) => item !== candidate)].slice(
+        0,
+        NLP2SQL_MAX_COMMON_QUERIES
+      );
+      saveCommonQueries(next);
+      return next;
+    });
+    setActionFeedback("Consulta salva nas comuns.");
   }
 
   function handleColumnChange(field, value) {
@@ -713,8 +825,47 @@ export function Nlp2SqlWidget({ data, title, subtitle }) {
         </button>
       </form>
 
+      <div className="nlp2sql-actions">
+        <button
+          type="button"
+          className="nlp2sql-secondary-button"
+          onClick={handleExportCsv}
+          disabled={!canExportCsv}
+        >
+          Gerar CSV
+        </button>
+        <button
+          type="button"
+          className="nlp2sql-secondary-button"
+          onClick={handleSaveCommonQuery}
+        >
+          Salvar consulta
+        </button>
+      </div>
+
+      {actionFeedback ? <p className="nlp2sql-meta">{actionFeedback}</p> : null}
+
+      {commonQueries.length > 0 ? (
+        <div className="nlp2sql-common-queries">
+          <p>Consultas comuns</p>
+          <div className="nlp2sql-common-queries-list">
+            {commonQueries.map((savedQuery) => (
+              <button
+                key={savedQuery}
+                type="button"
+                className="nlp2sql-chip"
+                onClick={() => setQuestion(savedQuery)}
+                title={savedQuery}
+              >
+                {savedQuery}
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : null}
+
       {data?.enabled === false && (
-        <p className="nlp2sql-guardrail">Módulo NLP2SQL está desativado no backend.</p>
+        <p className="nlp2sql-guardrail">MÃ³dulo NLP2SQL estÃ¡ desativado no backend.</p>
       )}
 
       {result && (
@@ -776,7 +927,7 @@ export function Nlp2SqlWidget({ data, title, subtitle }) {
 
           {insights.hasVisualData && (
             <div className="nlp2sql-insights">
-              <h4>Correlações visuais automáticas</h4>
+              <h4>CorrelaÃ§Ãµes visuais automÃ¡ticas</h4>
               {insights.explanation ? (
                 <div className="nlp2sql-insight-alert" role="alert">
                   {insights.explanation}
@@ -856,4 +1007,5 @@ export function DynamicWidget({ widget }) {
       return null;
   }
 }
+
 

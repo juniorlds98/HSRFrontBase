@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AddJornadaModal } from "../components/organisms/AddJornadaModal";
 import { JornadasTable } from "../components/organisms/JornadasTable";
@@ -64,7 +64,7 @@ export function JornadasModalPage() {
       setJornadas((c) => [mapJornadaToRow(created), ...c]);
       navigate("/jornadas", { replace: true });
     } catch (err) {
-      setSubmitError(err?.message || "Nao foi possivel registrar a jornada.");
+      setSubmitError(err?.message || "Não foi possível registrar a jornada.");
     } finally {
       setIsSubmitting(false);
     }
@@ -74,7 +74,7 @@ export function JornadasModalPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="pacientes-menu"
       activeSidebar="jornadas"
@@ -92,3 +92,5 @@ export function JornadasModalPage() {
     </DashboardTemplate>
   );
 }
+
+

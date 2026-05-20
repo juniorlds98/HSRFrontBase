@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ServiceDisableModal } from "../components/molecules/ServiceDisableModal";
 import { ServiceControlBoard } from "../components/organisms/ServiceControlBoard";
@@ -34,7 +34,7 @@ export function ServicesPage() {
         setMode(response.mode);
       } catch {
         if (!mounted) return;
-        setFeedback("Nao foi possivel carregar os servicos no momento.");
+        setFeedback("Não foi possível carregar os servicos no momento.");
       } finally {
         if (mounted) {
           setIsLoading(false);
@@ -112,7 +112,7 @@ export function ServicesPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="servicos"
       searchValue={query}
@@ -169,3 +169,5 @@ export function ServicesPage() {
     </DashboardTemplate>
   );
 }
+
+

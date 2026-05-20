@@ -1,4 +1,4 @@
-import { httpClient } from './httpClient';
+﻿import { httpClient } from './httpClient';
 
 const LOCAL_KEY = 'hsr_complicacoes_local';
 
@@ -39,3 +39,4 @@ export async function fetchComplicacaoReferences() {
     cirurgias: results[0].status === 'fulfilled' ? results[0].value : [],
   };
 }
+

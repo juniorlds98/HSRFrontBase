@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { InternacoesTable } from "../components/organisms/InternacoesTable";
 import { DashboardTemplate } from "../components/templates/DashboardTemplate";
@@ -38,7 +38,7 @@ export function InternacoesPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="gestao"
       activeSidebar="internacoes"
@@ -57,3 +57,4 @@ export function InternacoesPage() {
     </DashboardTemplate>
   );
 }
+

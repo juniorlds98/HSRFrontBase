@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CasesTable } from "../components/organisms/CasesTable";
 import { DashboardTemplate } from "../components/templates/DashboardTemplate";
@@ -61,7 +61,7 @@ export function CasesPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="casos-menu"
       activeSidebar="casos"
@@ -91,3 +91,4 @@ export function CasesPage() {
     </DashboardTemplate>
   );
 }
+

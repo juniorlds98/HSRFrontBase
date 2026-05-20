@@ -1,4 +1,4 @@
-export function FinanceProcedurePanel({ rows, formatCurrency }) {
+﻿export function FinanceProcedurePanel({ rows, formatCurrency }) {
   return (
     <article className="overview-panel">
       <header className="overview-panel-header">
@@ -39,3 +39,4 @@ export function FinanceProcedurePanel({ rows, formatCurrency }) {
     </article>
   );
 }
+

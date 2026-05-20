@@ -1,4 +1,4 @@
-export function FuncionariosTable({ funcionarios }) {
+﻿export function FuncionariosTable({ funcionarios }) {
   if (!funcionarios.length) return <p className="loading">Nenhum funcionario encontrado.</p>;
 
   return (
@@ -17,3 +17,4 @@ export function FuncionariosTable({ funcionarios }) {
     </div>
   );
 }
+

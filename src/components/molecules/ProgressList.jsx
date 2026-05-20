@@ -1,4 +1,4 @@
-export function ProgressList({ title, items }) {
+﻿export function ProgressList({ title, items }) {
   const maxValue = items.reduce((acc, item) => Math.max(acc, item.value), 0) || 1;
 
   return (
@@ -26,3 +26,4 @@ export function ProgressList({ title, items }) {
     </section>
   );
 }
+

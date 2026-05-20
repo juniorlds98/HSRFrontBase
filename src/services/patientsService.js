@@ -1,4 +1,4 @@
-import { httpClient } from "./httpClient";
+﻿import { httpClient } from "./httpClient";
 
 export async function fetchPatients() {
   const { data } = await httpClient.get("/api/v1/pacientes");
@@ -52,3 +52,4 @@ export function computeAge(dateIso) {
 
   return age;
 }
+

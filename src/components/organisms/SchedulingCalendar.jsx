@@ -1,4 +1,4 @@
-const weekDays = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
+﻿const weekDays = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
 
 function EventCard({ event }) {
   return (
@@ -48,3 +48,4 @@ export function SchedulingCalendar({ monthLabel, cells, eventsByDay, onPrevMonth
     </section>
   );
 }
+

@@ -1,4 +1,4 @@
-import { MetricCard } from "../molecules/MetricCard";
+﻿import { MetricCard } from "../molecules/MetricCard";
 
 export function DashboardSummary({ cards, score }) {
   return (
@@ -18,3 +18,4 @@ export function DashboardSummary({ cards, score }) {
     </section>
   );
 }
+

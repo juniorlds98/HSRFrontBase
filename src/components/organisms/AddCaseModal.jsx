@@ -1,4 +1,4 @@
-export function AddCaseModal({
+﻿export function AddCaseModal({
   form,
   references,
   onChange,
@@ -151,3 +151,4 @@ export function AddCaseModal({
     </div>
   );
 }
+

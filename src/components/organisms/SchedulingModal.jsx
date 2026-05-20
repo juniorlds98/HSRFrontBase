@@ -1,4 +1,4 @@
-export function SchedulingModal({
+﻿export function SchedulingModal({
   form,
   references,
   onChange,
@@ -113,3 +113,4 @@ export function SchedulingModal({
     </div>
   );
 }
+

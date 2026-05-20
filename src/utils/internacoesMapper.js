@@ -1,4 +1,4 @@
-function fmt(dateStr) {
+﻿function fmt(dateStr) {
   if (!dateStr) return '-';
   const d = new Date(dateStr);
   if (isNaN(d.getTime())) return dateStr;
@@ -16,3 +16,4 @@ export function mapInternacaoToRow(item) {
     dataSaida: fmt(item?.dataSaida),
   };
 }
+

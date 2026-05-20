@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ConsentimentosTable } from "../components/organisms/ConsentimentosTable";
 import { DashboardTemplate } from "../components/templates/DashboardTemplate";
@@ -31,14 +31,28 @@ export function ConsentimentosPage() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return consentimentos;
-    return consentimentos.filter((c) => c.pacienteId.toLowerCase().includes(q) || c.canal.toLowerCase().includes(q));
+    return consentimentos.filter(
+      (c) =>
+        c.pacienteId.toLowerCase().includes(q) ||
+        c.canal.toLowerCase().includes(q) ||
+        String(c.arquivoRelatorioNome || "").toLowerCase().includes(q),
+    );
   }, [consentimentos, query]);
 
   async function handleLogout() { await logout(); navigate("/", { replace: true }); }
 
+  function handleOpenReportFile(file) {
+    navigate("/relatorios", {
+      state: {
+        selectedFilePath: file?.path ?? "",
+        selectedFileName: file?.name ?? "",
+      },
+    });
+  }
+
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="qualidade-menu"
       activeSidebar="consentimentos"
@@ -53,7 +67,12 @@ export function ConsentimentosPage() {
           </button>
         </div>
       </section>
-      {isLoading ? <p className="loading">Carregando consentimentos...</p> : <ConsentimentosTable consentimentos={filtered} />}
+      {isLoading ? (
+        <p className="loading">Carregando consentimentos...</p>
+      ) : (
+        <ConsentimentosTable consentimentos={filtered} onOpenReportFile={handleOpenReportFile} />
+      )}
     </DashboardTemplate>
   );
 }
+

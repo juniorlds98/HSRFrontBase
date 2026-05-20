@@ -1,4 +1,4 @@
-import { httpClient } from "./httpClient";
+﻿import { httpClient } from "./httpClient";
 
 const STACK_ENDPOINT = "/api/health/stack";
 const MOCK_BASE_ENDPOINT = import.meta.env.VITE_SERVICE_CONTROL_BASE_PATH ?? "/api/mock/services";
@@ -169,3 +169,4 @@ export async function performServiceAction(serviceId, action) {
     },
   };
 }
+

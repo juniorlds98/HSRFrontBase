@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 
 export function AccordionPanel({ title, subtitle, defaultOpen = false, children }) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
@@ -22,3 +22,4 @@ export function AccordionPanel({ title, subtitle, defaultOpen = false, children 
     </section>
   );
 }
+

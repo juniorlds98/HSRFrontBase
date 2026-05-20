@@ -1,4 +1,4 @@
-export function MedicosTable({ medicos }) {
+﻿export function MedicosTable({ medicos }) {
   if (!medicos.length) {
     return <p className="loading">Nenhum medico encontrado.</p>;
   }
@@ -32,3 +32,4 @@ export function MedicosTable({ medicos }) {
     </div>
   );
 }
+

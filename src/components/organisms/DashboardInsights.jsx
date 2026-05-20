@@ -1,4 +1,4 @@
-import { ProgressList } from "../molecules/ProgressList";
+﻿import { ProgressList } from "../molecules/ProgressList";
 import { MiniBarChart } from "../molecules/MiniBarChart";
 
 export function DashboardInsights({ surgeryStatus, atendimentoSteps, monthlyAttendances }) {
@@ -10,3 +10,4 @@ export function DashboardInsights({ surgeryStatus, atendimentoSteps, monthlyAtte
     </section>
   );
 }
+

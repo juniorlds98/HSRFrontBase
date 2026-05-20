@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AddCaseModal } from "../components/organisms/AddCaseModal";
 import { CasesTable } from "../components/organisms/CasesTable";
@@ -104,7 +104,7 @@ export function CasesModalPage() {
       setSubmitError(
         typeof message === "string" && message.trim()
           ? message
-          : "Nao foi possivel registrar o caso. Verifique os campos e tente novamente.",
+          : "Não foi possível registrar o caso. Verifique os campos e tente novamente.",
       );
     } finally {
       setIsSubmitting(false);
@@ -118,7 +118,7 @@ export function CasesModalPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="casos-menu"
       activeSidebar="casos"
@@ -156,3 +156,5 @@ export function CasesModalPage() {
     </DashboardTemplate>
   );
 }
+
+

@@ -1,4 +1,4 @@
-const STATUS_OPTIONS = ['ATIVO', 'INATIVO', 'SUSPENSO'];
+﻿const STATUS_OPTIONS = ['ATIVO', 'INATIVO', 'SUSPENSO'];
 
 export function AddProcedimentoModal({ form, onChange, onSubmit, onClose, isSubmitting, error }) {
   return (
@@ -30,3 +30,4 @@ export function AddProcedimentoModal({ form, onChange, onSubmit, onClose, isSubm
     </div>
   );
 }
+

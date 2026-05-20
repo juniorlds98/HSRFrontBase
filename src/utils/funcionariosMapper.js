@@ -1,4 +1,4 @@
-export function mapFuncionarioToRow(item) {
+﻿export function mapFuncionarioToRow(item) {
   return {
     id: item?.id,
     nome: item?.nome ?? '-',
@@ -8,3 +8,4 @@ export function mapFuncionarioToRow(item) {
     ativo: item?.ativo === false ? 'Inativo' : 'Ativo',
   };
 }
+

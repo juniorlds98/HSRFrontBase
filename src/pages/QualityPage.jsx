@@ -1,4 +1,4 @@
-import { MenuOverviewPage } from "./MenuOverviewPage";
+﻿import { MenuOverviewPage } from "./MenuOverviewPage";
 
 const sources = [
   {
@@ -12,7 +12,7 @@ const sources = [
       },
       {
         label: "Gravidade",
-        render: (item) => item?.cirurgia?.risco ?? "Nao informado",
+        render: (item) => item?.cirurgia?.risco ?? "Não informado",
       },
       {
         label: "Registrado",
@@ -71,3 +71,5 @@ export function QualityPage() {
     />
   );
 }
+
+

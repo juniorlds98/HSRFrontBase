@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CirurgiasTable } from "../components/organisms/CirurgiasTable";
 import { DashboardTemplate } from "../components/templates/DashboardTemplate";
@@ -43,7 +43,7 @@ export function CirurgiasPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="gestao"
       activeSidebar="cirurgias"
@@ -62,3 +62,4 @@ export function CirurgiasPage() {
     </DashboardTemplate>
   );
 }
+

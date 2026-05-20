@@ -1,4 +1,4 @@
-import { httpClient } from "./httpClient";
+﻿import { httpClient } from "./httpClient";
 
 export async function fetchChatConversations() {
   const { data } = await httpClient.get("/api/v1/chat/conversas");
@@ -33,3 +33,4 @@ export function formatChatTime(dateIso) {
     minute: "2-digit",
   }).format(date);
 }
+

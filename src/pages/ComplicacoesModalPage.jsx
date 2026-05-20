@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AddComplicacaoModal } from "../components/organisms/AddComplicacaoModal";
 import { ComplicacoesTable } from "../components/organisms/ComplicacoesTable";
@@ -54,7 +54,7 @@ export function ComplicacoesModalPage() {
       setComplicacoes((c) => [mapComplicacaoToRow(created), ...c]);
       navigate("/complicacoes", { replace: true });
     } catch (err) {
-      setSubmitError(err?.message || "Nao foi possivel registrar a complicacao.");
+      setSubmitError(err?.message || "Não foi possível registrar a complicacao.");
     } finally {
       setIsSubmitting(false);
     }
@@ -64,7 +64,7 @@ export function ComplicacoesModalPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="qualidade-menu"
       activeSidebar="complicacoes"
@@ -82,3 +82,5 @@ export function ComplicacoesModalPage() {
     </DashboardTemplate>
   );
 }
+
+

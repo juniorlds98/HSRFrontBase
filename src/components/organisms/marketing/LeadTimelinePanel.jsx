@@ -1,4 +1,4 @@
-export function LeadTimelinePanel({ lead, formatDateTime, onOpenPatient, onOpenWhatsapp, onClose }) {
+﻿export function LeadTimelinePanel({ lead, formatDateTime, onOpenPatient, onOpenWhatsapp, onClose }) {
   if (!lead) {
     return null;
   }
@@ -38,3 +38,4 @@ export function LeadTimelinePanel({ lead, formatDateTime, onOpenPatient, onOpenW
     </div>
   );
 }
+

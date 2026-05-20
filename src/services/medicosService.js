@@ -1,4 +1,4 @@
-import { httpClient } from './httpClient';
+﻿import { httpClient } from './httpClient';
 
 const LOCAL_KEY = 'hsr_medicos_local';
 
@@ -42,3 +42,4 @@ export async function fetchMedicoReferences() {
     cargos: results[0].status === 'fulfilled' ? results[0].value : [],
   };
 }
+

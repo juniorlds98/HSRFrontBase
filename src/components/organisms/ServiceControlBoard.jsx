@@ -1,4 +1,4 @@
-import { Button } from "../atoms/Button";
+﻿import { Button } from "../atoms/Button";
 
 function ServiceStat({ label, value }) {
   return (
@@ -24,7 +24,7 @@ export function ServiceControlBoard({ services, onRestart, onDisable, pendingId 
       {essentialServices.length > 0 && (
         <>
           <div className="services-section-header">
-            <h2>🔧 Serviços Essenciais</h2>
+            <h2>Serviços Essenciais</h2>
             <p className="services-section-help">Estes serviços são críticos para o funcionamento do sistema.</p>
           </div>
           <div className="services-grid">
@@ -38,7 +38,7 @@ export function ServiceControlBoard({ services, onRestart, onDisable, pendingId 
       {optionalServices.length > 0 && (
         <>
           <div className="services-section-header">
-            <h2>✨ Serviços Opcionais</h2>
+            <h2>Serviços Opcionais</h2>
             <p className="services-section-help">Estes serviços melhoram a experiência mas não são críticos. Você pode desligá-los se necessário.</p>
           </div>
           <div className="services-grid">
@@ -63,7 +63,7 @@ function ServiceCard({ service, onRestart, onDisable, pendingId }) {
         <span className={`service-chip service-chip-${service.status}`}>{getStatusText(service.status)}</span>
       </header>
 
-      <p className="service-url">{service.url || "Servico interno"}</p>
+      <p className="service-url">{service.url || "Serviço interno"}</p>
 
       <div className="service-actions-row">
         <Button className="service-action-btn restart" onClick={() => onRestart(service)} disabled={isPending}>
@@ -73,7 +73,7 @@ function ServiceCard({ service, onRestart, onDisable, pendingId }) {
           className={`service-action-btn stop ${service.isFacultative ? "optional" : "disabled"}`}
           onClick={() => onDisable(service)}
           disabled={isPending || !service.isFacultative}
-          title={service.isFacultative ? "Desativar servico" : "Servico essencial nao pode ser desligado"}
+          title={service.isFacultative ? "Desativar serviço" : "Serviço essencial não pode ser desligado"}
         >
           {service.isFacultative ? "Parar" : "Crítico"}
         </Button>
@@ -90,3 +90,4 @@ function ServiceCard({ service, onRestart, onDisable, pendingId }) {
     </article>
   );
 }
+

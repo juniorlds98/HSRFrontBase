@@ -1,4 +1,4 @@
-import { toDateKey } from "../services/schedulingService";
+﻿import { toDateKey } from "../services/schedulingService";
 
 function formatHour(dateIso) {
   const date = new Date(dateIso);
@@ -27,3 +27,4 @@ export function groupEventsByDay(events) {
     return acc;
   }, {});
 }
+

@@ -1,4 +1,4 @@
-const FIELDS = [
+﻿const FIELDS = [
   { key: "canal", placeholder: "Canal", type: "text" },
   { key: "origem", placeholder: "Origem", type: "text" },
   { key: "responsavel", placeholder: "Responsavel", type: "text" },
@@ -26,3 +26,4 @@ export function MarketingAdvancedFilters({ filters, onChange }) {
     </section>
   );
 }
+

@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginPanel } from "../components/organisms/LoginPanel";
 import { AuthTemplate } from "../components/templates/AuthTemplate";
@@ -27,3 +27,4 @@ export function LoginPage() {
     </AuthTemplate>
   );
 }
+

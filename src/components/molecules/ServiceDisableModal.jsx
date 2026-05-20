@@ -1,4 +1,4 @@
-import { Button } from "../atoms/Button";
+﻿import { Button } from "../atoms/Button";
 
 export function ServiceDisableModal({ serviceName, isLoading, onConfirm, onCancel }) {
   return (
@@ -18,3 +18,4 @@ export function ServiceDisableModal({ serviceName, isLoading, onConfirm, onCance
     </div>
   );
 }
+

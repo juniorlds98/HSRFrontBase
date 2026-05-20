@@ -1,4 +1,4 @@
-import { httpClient } from './httpClient';
+﻿import { httpClient } from './httpClient';
 
 const LOCAL_KEY = 'hsr_funcionarios_local';
 
@@ -41,3 +41,4 @@ export async function fetchFuncionarioReferences() {
     cargos: results[0].status === 'fulfilled' ? results[0].value : [],
   };
 }
+

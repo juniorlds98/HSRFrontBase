@@ -1,4 +1,4 @@
-export function LeadsConversionPanel({ conversion, showHeader = true }) {
+﻿export function LeadsConversionPanel({ conversion, showHeader = true }) {
   return (
     <article className="overview-panel">
       {showHeader ? (
@@ -28,3 +28,4 @@ export function LeadsConversionPanel({ conversion, showHeader = true }) {
     </article>
   );
 }
+

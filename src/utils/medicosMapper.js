@@ -1,4 +1,4 @@
-export function mapMedicoToRow(item) {
+﻿export function mapMedicoToRow(item) {
   const nome = item?.nome ?? '-';
   const cpf = item?.cpf ?? '-';
   const ativo = item?.ativo === false ? 'Inativo' : 'Ativo';
@@ -10,3 +10,4 @@ export function mapMedicoToRow(item) {
 
   return { id: item?.id, nome, cpf, ativo, cargo, departamento, crmDisplay };
 }
+

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AddFuncionarioModal } from "../components/organisms/AddFuncionarioModal";
 import { FuncionariosTable } from "../components/organisms/FuncionariosTable";
@@ -54,7 +54,7 @@ export function FuncionariosModalPage() {
       setFuncionarios((c) => [mapFuncionarioToRow(created), ...c]);
       navigate("/funcionarios", { replace: true });
     } catch (err) {
-      setSubmitError(err?.message || "Nao foi possivel cadastrar o funcionario.");
+      setSubmitError(err?.message || "Não foi possível cadastrar o funcionario.");
     } finally {
       setIsSubmitting(false);
     }
@@ -64,7 +64,7 @@ export function FuncionariosModalPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="gestao"
       activeSidebar="funcionarios"
@@ -82,3 +82,5 @@ export function FuncionariosModalPage() {
     </DashboardTemplate>
   );
 }
+
+

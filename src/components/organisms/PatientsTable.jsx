@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 
 function PatientRow({ patient, highlighted, onOpenConversation, onDeactivate }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,7 +41,7 @@ function PatientRow({ patient, highlighted, onOpenConversation, onDeactivate }) 
           aria-label="Mais opcoes"
           onClick={() => setIsMenuOpen((value) => !value)}
         >
-          ⋮
+          â‹®
         </button>
 
         {isMenuOpen ? (
@@ -87,3 +87,4 @@ export function PatientsTable({ patients, highlightPatientId = null, onOpenConve
     </section>
   );
 }
+

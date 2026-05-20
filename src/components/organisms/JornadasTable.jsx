@@ -1,4 +1,4 @@
-export function JornadasTable({ jornadas }) {
+﻿export function JornadasTable({ jornadas }) {
   if (!jornadas.length) return <p className="loading">Nenhuma jornada encontrada.</p>;
 
   return (
@@ -16,3 +16,4 @@ export function JornadasTable({ jornadas }) {
     </div>
   );
 }
+

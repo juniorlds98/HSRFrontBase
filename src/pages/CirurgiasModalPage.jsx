@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AddCirurgiaModal } from "../components/organisms/AddCirurgiaModal";
 import { CirurgiasTable } from "../components/organisms/CirurgiasTable";
@@ -74,7 +74,7 @@ export function CirurgiasModalPage() {
       setCirurgias((c) => [mapCirurgiaToRow(created), ...c]);
       navigate("/cirurgias", { replace: true });
     } catch (err) {
-      setSubmitError(err?.message || "Nao foi possivel registrar a cirurgia.");
+      setSubmitError(err?.message || "Não foi possível registrar a cirurgia.");
     } finally {
       setIsSubmitting(false);
     }
@@ -87,7 +87,7 @@ export function CirurgiasModalPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="gestao"
       activeSidebar="cirurgias"
@@ -113,3 +113,5 @@ export function CirurgiasModalPage() {
     </DashboardTemplate>
   );
 }
+
+

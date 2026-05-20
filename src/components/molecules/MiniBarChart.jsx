@@ -1,4 +1,4 @@
-export function MiniBarChart({ title, points }) {
+﻿export function MiniBarChart({ title, points }) {
   const maxValue = points.reduce((acc, point) => Math.max(acc, point.value), 0) || 1;
 
   return (
@@ -23,3 +23,4 @@ export function MiniBarChart({ title, points }) {
     </section>
   );
 }
+

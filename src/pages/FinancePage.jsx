@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { DateRangeFilters } from "../components/molecules/DateRangeFilters";
 import { FinancePayrollPanel } from "../components/organisms/finance/FinancePayrollPanel";
@@ -66,7 +66,7 @@ export function FinancePage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="financeiro"
       activeSidebar="relatorios"
@@ -128,3 +128,4 @@ export function FinancePage() {
     </DashboardTemplate>
   );
 }
+

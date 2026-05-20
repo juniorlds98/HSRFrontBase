@@ -1,4 +1,4 @@
-import supportIllustration from "../../assets/images/icone fundo transparente.png";
+﻿const supportIllustration = encodeURI("/assets/images/icone fundo transparente.png");
 
 export function AddPatientModal({ form, onChange, onSubmit, onClose, isSubmitting, error }) {
   return (
@@ -91,3 +91,4 @@ export function AddPatientModal({ form, onChange, onSubmit, onClose, isSubmittin
     </div>
   );
 }
+

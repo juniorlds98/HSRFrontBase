@@ -7,6 +7,7 @@ import { FinancePage } from "./pages/FinancePage";
 import { ManagementPage } from "./pages/ManagementPage";
 import { MarketingPage } from "./pages/MarketingPage";
 import { ChatPage } from "./pages/ChatPage";
+import { ChatIaPage } from "./pages/ChatIaPage";
 import { LoginPage } from "./pages/LoginPage";
 import { PatientsModalPage } from "./pages/PatientsModalPage";
 import { PatientsPage } from "./pages/PatientsPage";
@@ -52,6 +53,7 @@ function App() {
           <Route path="/dashboard" element={wrap(<DashboardPage />)} />
           <Route path="/services" element={wrap(<ServicesPage />)} />
           <Route path="/mensagens" element={wrap(<ChatPage />)} />
+          <Route path="/chat-ia" element={wrap(<ChatIaPage />)} />
           <Route path="/financeiro" element={wrap(<FinancePage />)} />
           <Route path="/marketing" element={wrap(<MarketingPage />)} />
           <Route path="/medicos" element={wrap(<MedicosPage />)} />
@@ -88,3 +90,4 @@ function App() {
 }
 
 export default App;
+

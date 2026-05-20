@@ -1,4 +1,4 @@
-export function mapComplicacaoToRow(item) {
+﻿export function mapComplicacaoToRow(item) {
   return {
     id: item?.id,
     cirurgiaId: item?.cirurgia?.id ?? '-',
@@ -7,3 +7,4 @@ export function mapComplicacaoToRow(item) {
     descricao: item?.descricao ?? '-',
   };
 }
+

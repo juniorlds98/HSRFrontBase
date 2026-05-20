@@ -1,4 +1,4 @@
-export function CirurgiasTable({ cirurgias }) {
+﻿export function CirurgiasTable({ cirurgias }) {
   if (!cirurgias.length) {
     return <p className="loading">Nenhuma cirurgia encontrada.</p>;
   }
@@ -40,3 +40,4 @@ export function CirurgiasTable({ cirurgias }) {
     </div>
   );
 }
+

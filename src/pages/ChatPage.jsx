@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { DashboardTemplate } from "../components/templates/DashboardTemplate";
 import { useAuth } from "../features/auth/AuthContext";
@@ -71,7 +71,7 @@ export function ChatPage() {
         }
       } catch (error) {
         if (mounted) {
-          setError(getApiErrorMessage(error, "Nao foi possivel carregar as conversas."));
+          setError(getApiErrorMessage(error, "Não foi possível carregar as conversas."));
         }
       } finally {
         if (mounted) {
@@ -133,7 +133,7 @@ export function ChatPage() {
         conversaId: selectedConversationId,
         conteudo: text,
         usuarioId: Number.isFinite(userId) ? userId : undefined,
-        usuarioEmail: user?.email ?? undefined,
+        UsuárioEmail: user?.email ?? undefined,
       });
 
       const [updatedConversations, updatedMessages] = await Promise.all([
@@ -144,7 +144,7 @@ export function ChatPage() {
       setConversations(updatedConversations);
       setMessages(updatedMessages);
     } catch (error) {
-      setError(getApiErrorMessage(error, "Nao foi possivel enviar a mensagem."));
+      setError(getApiErrorMessage(error, "Não foi possível enviar a mensagem."));
     }
   }
 
@@ -170,7 +170,7 @@ export function ChatPage() {
         await selectConversation(newId);
       }
     } catch (error) {
-      setError(getApiErrorMessage(error, "Nao foi possivel criar conversa."));
+      setError(getApiErrorMessage(error, "Não foi possível criar conversa."));
     }
   }
 
@@ -218,7 +218,7 @@ export function ChatPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="conversas"
       hideSidebar
@@ -320,3 +320,5 @@ export function ChatPage() {
     </DashboardTemplate>
   );
 }
+
+

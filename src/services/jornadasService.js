@@ -1,4 +1,4 @@
-import { httpClient } from './httpClient';
+﻿import { httpClient } from './httpClient';
 
 const LOCAL_KEY = 'hsr_jornadas_local';
 
@@ -43,3 +43,4 @@ export async function fetchJornadaReferences() {
     etapas: results[1].status === 'fulfilled' ? results[1].value : [],
   };
 }
+

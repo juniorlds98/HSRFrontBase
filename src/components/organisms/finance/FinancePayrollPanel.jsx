@@ -1,4 +1,4 @@
-export function FinancePayrollPanel({ rows, formatCurrency }) {
+﻿export function FinancePayrollPanel({ rows, formatCurrency }) {
   return (
     <article className="overview-panel">
       <header className="overview-panel-header">
@@ -35,3 +35,4 @@ export function FinancePayrollPanel({ rows, formatCurrency }) {
     </article>
   );
 }
+

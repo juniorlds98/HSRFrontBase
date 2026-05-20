@@ -1,4 +1,4 @@
-import { MenuOverviewPage } from "./MenuOverviewPage";
+﻿import { MenuOverviewPage } from "./MenuOverviewPage";
 
 const sources = [
   {
@@ -71,3 +71,4 @@ export function ManagementPage() {
     />
   );
 }
+

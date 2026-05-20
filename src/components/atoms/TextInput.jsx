@@ -1,4 +1,4 @@
-export function TextInput({ label, id, error, className = "", ...props }) {
+﻿export function TextInput({ label, id, error, className = "", ...props }) {
   return (
     <div className={`field ${className}`.trim()}>
       {label ? (
@@ -11,3 +11,4 @@ export function TextInput({ label, id, error, className = "", ...props }) {
     </div>
   );
 }
+

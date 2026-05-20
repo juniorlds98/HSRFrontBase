@@ -1,4 +1,4 @@
-export function AddComplicacaoModal({ form, references, onChange, onSubmit, onClose, isSubmitting, error }) {
+﻿export function AddComplicacaoModal({ form, references, onChange, onSubmit, onClose, isSubmitting, error }) {
   const { cirurgias = [] } = references;
 
   return (
@@ -40,3 +40,4 @@ export function AddComplicacaoModal({ form, references, onChange, onSubmit, onCl
     </div>
   );
 }
+

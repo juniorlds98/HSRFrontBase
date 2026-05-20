@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { Button } from "../atoms/Button";
 import { TextInput } from "../atoms/TextInput";
 
@@ -15,8 +15,8 @@ export function LoginForm({ onSubmit, loading }) {
     <form onSubmit={handleSubmit} className="login-form">
       <TextInput
         id="username"
-        label="Usuario"
-        placeholder="Digite seu usuario"
+        label="UsuÃ¡rio"
+        placeholder="Digite seu usuÃ¡rio"
         value={username}
         onChange={(event) => setUsername(event.target.value)}
         autoComplete="username"
@@ -40,3 +40,4 @@ export function LoginForm({ onSubmit, loading }) {
     </form>
   );
 }
+

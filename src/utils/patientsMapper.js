@@ -1,4 +1,4 @@
-import { computeAge } from "../services/patientsService";
+﻿import { computeAge } from "../services/patientsService";
 
 function formatDate(dateIso) {
   if (!dateIso) return "-";
@@ -33,3 +33,4 @@ export function mapPatientToRow(patient) {
     active: patient.ativo !== false,
   };
 }
+

@@ -1,4 +1,4 @@
-const RISCOS = ['BAIXO', 'MEDIO', 'ALTO', 'CRITICO'];
+﻿const RISCOS = ['BAIXO', 'MEDIO', 'ALTO', 'CRITICO'];
 
 export function AddCirurgiaModal({ form, references, onChange, onSubmit, onClose, isSubmitting, error }) {
   const { pacientes = [], medicos = [], procedimentos = [], gravidades = [], status = [] } = references;
@@ -82,3 +82,4 @@ export function AddCirurgiaModal({ form, references, onChange, onSubmit, onClose
     </div>
   );
 }
+

@@ -1,4 +1,4 @@
-function CaseRow({ item }) {
+﻿function CaseRow({ item }) {
   return (
     <article className="cases-row">
       <div className="cases-main-col">
@@ -57,3 +57,4 @@ export function CasesTable({ cases }) {
     </section>
   );
 }
+

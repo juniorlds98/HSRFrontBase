@@ -1,28 +1,30 @@
 ﻿import { Link, useLocation } from "react-router-dom";
 import { Button } from "../atoms/Button";
-import logo from "../../assets/images/logo-login.png";
-import searchIcon from "../../assets/icons/buscar.svg";
-import whatsappIcon from "../../assets/icons/whatsapp.svg";
-import supportIllustration from "../../assets/icons/suport.svg";
 import { canAccessScreen } from "../../services/permissionService";
+
+const logo = "/assets/images/logo-login.png";
+const searchIcon = "/assets/icons/buscar.svg";
+const whatsappIcon = "/assets/icons/whatsapp.svg";
+const supportIllustration = "/assets/icons/suport.svg";
 
 const topMenuItems = [
   { key: "dashboard", label: "Dashboard", to: "/dashboard" },
-  { key: "relatorios", label: "Relatorios", to: "/relatorios", permission: "relatorio" },
+  { key: "relatorios", label: "Relatórios", to: "/relatorios", permission: "relatorio" },
   { key: "financeiro", label: "Financeiro", to: "/financeiro", permission: "financeiro" },
   { key: "marketing", label: "Marketing", to: "/marketing" },
   { key: "pacientes", label: "Pacientes", to: "/pacientes" },
   { key: "casos", label: "Casos", to: "/casos" },
-  { key: "medicos", label: "Medicos", to: "/medicos" },
-  { key: "gestao", label: "Gestao", to: "/gestao" },
+  { key: "medicos", label: "Médicos", to: "/medicos" },
+  { key: "gestao", label: "Gestão", to: "/gestao" },
   { key: "qualidade", label: "Qualidade", to: "/qualidade" },
-  { key: "servicos", label: "Servicos", to: "/services", permission: "servicos" },
+  { key: "servicos", label: "Serviços", to: "/services", permission: "servicos" },
   { key: "conversas", label: "Conversas", to: "/mensagens" },
+  { key: "chat-ia", label: "Chat com IA", to: "/chat-ia" },
 ];
 
 const defaultSidebarItems = [
   { key: "dashboard", label: "Dashboard", to: "/dashboard" },
-  { key: "relatorios", label: "Relatorios", to: "/relatorios", permission: "relatorio" },
+  { key: "relatorios", label: "Relatórios", to: "/relatorios", permission: "relatorio" },
   { key: "financeiro", label: "Financeiro", to: "/financeiro", permission: "financeiro" },
   { key: "marketing", label: "Marketing", to: "/marketing" },
   { key: "conversas", label: "Conversas", to: "/mensagens" },
@@ -30,15 +32,15 @@ const defaultSidebarItems = [
   { key: "jornadas", label: "Jornadas", to: "/jornadas" },
   { key: "casos", label: "Casos", to: "/casos" },
   { key: "agendamentos", label: "Agendamentos", to: "/agendamentos" },
-  { key: "internacoes", label: "Internacoes", to: "/internacoes" },
+  { key: "internacoes", label: "Internações", to: "/internacoes" },
   { key: "cirurgias", label: "Cirurgias", to: "/cirurgias" },
   { key: "procedimentos", label: "Procedimentos", to: "/procedimentos" },
-  { key: "complicacoes", label: "Complicacoes", to: "/complicacoes" },
+  { key: "complicacoes", label: "Complicações", to: "/complicacoes" },
   { key: "consentimentos", label: "Consentimentos", to: "/consentimentos" },
-  { key: "medicos", label: "Medicos", to: "/medicos" },
-  { key: "funcionarios", label: "Funcionarios", to: "/funcionarios" },
+  { key: "medicos", label: "Médicos", to: "/medicos" },
+  { key: "funcionarios", label: "Funcionários", to: "/funcionarios" },
   { key: "qualidade", label: "Qualidade", to: "/qualidade" },
-  { key: "servicos", label: "Servicos", to: "/services", permission: "servicos" },
+  { key: "servicos", label: "Serviços", to: "/services", permission: "servicos" },
 ];
 
 const routeStateMap = [
@@ -46,6 +48,7 @@ const routeStateMap = [
   { prefix: "/financeiro", menu: "financeiro", sidebar: "financeiro" },
   { prefix: "/marketing", menu: "marketing", sidebar: "marketing" },
   { prefix: "/mensagens", menu: "conversas", sidebar: "conversas" },
+  { prefix: "/chat-ia", menu: "chat-ia", sidebar: "conversas" },
   { prefix: "/pacientes", menu: "pacientes", sidebar: "pacientes" },
   { prefix: "/jornadas", menu: "pacientes", sidebar: "jornadas" },
   { prefix: "/casos", menu: "casos", sidebar: "casos" },
@@ -86,7 +89,7 @@ export function DashboardTemplate({
   return (
     <main className="dashboard-page">
       <header className="topbar">
-        <img src={logo} alt="Hospital Sao Rafael" className="brand-logo" />
+        <img src={logo} alt="Hospital São Rafael" className="brand-logo" />
         <nav className="top-menu">
           {topMenuItems
             .filter((item) => !item.permission || canAccessScreen(item.permission))
@@ -115,7 +118,7 @@ export function DashboardTemplate({
             })}
         </nav>
         <div className="top-actions">
-          <span>Ola, {userName}</span>
+          <span>Olá, {userName}</span>
           <Button variant="ghost" onClick={onLogout}>
             Sair
           </Button>
@@ -168,10 +171,7 @@ export function DashboardTemplate({
 
         <section className={`dashboard-content ${hideSidebar ? "dashboard-content-full" : ""}`}>{children}</section>
       </section>
-
-      <button className="whatsapp-fab" type="button" aria-label="WhatsApp">
-        <img src={whatsappIcon} alt="" />
-      </button>
     </main>
   );
 }
+

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SchedulingCalendar } from "../components/organisms/SchedulingCalendar";
 import { SchedulingModal } from "../components/organisms/SchedulingModal";
@@ -112,7 +112,7 @@ export function SchedulingModalPage() {
       setAgendamentos((current) => [mapAgendamentoToEvent(created), ...current]);
       navigate("/agendamentos", { replace: true });
     } catch (error) {
-      setSubmitError(getApiErrorMessage(error, "Nao foi possivel criar o agendamento. Confira os campos selecionados."));
+      setSubmitError(getApiErrorMessage(error, "Não foi possível criar o agendamento. Confira os campos selecionados."));
     } finally {
       setIsSubmitting(false);
     }
@@ -125,7 +125,7 @@ export function SchedulingModalPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="gestao"
       activeSidebar="agendamentos"
@@ -162,3 +162,5 @@ export function SchedulingModalPage() {
     </DashboardTemplate>
   );
 }
+
+

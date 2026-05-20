@@ -1,4 +1,4 @@
-export function ProcedimentosTable({ procedimentos }) {
+﻿export function ProcedimentosTable({ procedimentos }) {
   if (!procedimentos.length) return <p className="loading">Nenhum procedimento encontrado.</p>;
 
   return (
@@ -14,3 +14,4 @@ export function ProcedimentosTable({ procedimentos }) {
     </div>
   );
 }
+

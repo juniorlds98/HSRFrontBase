@@ -1,8 +1,8 @@
-const CANAIS = ['EMAIL', 'SMS', 'WHATSAPP', 'TELEFONE'];
+﻿const CANAIS = ['EMAIL', 'SMS', 'WHATSAPP', 'TELEFONE'];
 const FINALIDADES = ['MARKETING', 'LEMBRETE_CONSULTA', 'RESULTADO_EXAME', 'COBRANCA'];
 
 export function AddConsentimentoModal({ form, references, onChange, onSubmit, onClose, isSubmitting, error }) {
-  const { pacientes = [] } = references;
+  const { pacientes = [], arquivosRelatorios = [] } = references;
 
   return (
     <div className="overlay-backdrop" role="dialog" aria-modal="true" aria-labelledby="add-cons-title">
@@ -49,6 +49,23 @@ export function AddConsentimentoModal({ form, references, onChange, onSubmit, on
           <input id="cs-data" className="patient-input" type="datetime-local" value={form.dataConsentimento} onChange={(e) => onChange('dataConsentimento', e.target.value)} />
         </div>
 
+        <div className="overlay-field overlay-field--wide">
+          <label htmlFor="cs-report-file">Arquivo do Relatorio (MinIO)</label>
+          <select
+            id="cs-report-file"
+            className="patient-input"
+            value={form.linkedFilePath || ''}
+            onChange={(e) => onChange('linkedFilePath', e.target.value)}
+          >
+            <option value="">Nenhum arquivo vinculado</option>
+            {arquivosRelatorios.map((file) => (
+              <option key={file.id || file.path} value={file.path}>
+                {file.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
         {error && <p className="overlay-error">{error}</p>}
 
         <div className="overlay-actions">
@@ -61,3 +78,4 @@ export function AddConsentimentoModal({ form, references, onChange, onSubmit, on
     </div>
   );
 }
+

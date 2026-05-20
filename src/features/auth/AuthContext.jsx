@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState } from "react";
+﻿import { createContext, useContext, useMemo, useState } from "react";
 import { loginWithPassword, logoutFromKeycloak } from "../../services/keycloakAuthService";
 import {
   clearAuthStorage,
@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
     } catch (error) {
       const reason =
         error?.response?.data?.error_description ??
-        "Falha ao autenticar no Keycloak. Verifique usuario e senha.";
+        "Falha ao autenticar no Keycloak. Verifique usuÃ¡rio e senha.";
       return { ok: false, message: reason };
     } finally {
       setIsLoading(false);
@@ -65,3 +65,4 @@ export function useAuth() {
   }
   return context;
 }
+

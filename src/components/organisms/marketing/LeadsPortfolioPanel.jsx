@@ -1,4 +1,4 @@
-export function LeadsPortfolioPanel({ leads, formatCurrency, formatDateTime, isOverdue, onTimeline, onOpenPatient, showHeader = true }) {
+﻿export function LeadsPortfolioPanel({ leads, formatCurrency, formatDateTime, isOverdue, onTimeline, onOpenPatient, showHeader = true }) {
   return (
     <article className="overview-panel">
       {showHeader ? (
@@ -62,3 +62,4 @@ export function LeadsPortfolioPanel({ leads, formatCurrency, formatDateTime, isO
     </article>
   );
 }
+

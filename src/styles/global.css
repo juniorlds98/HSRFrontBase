@@ -1757,6 +1757,28 @@ input {
     overflow: hidden;
 }
 
+.ai-chat-layout {
+    grid-template-columns: 1fr;
+}
+
+.ai-chat-window {
+    min-height: calc(100vh - 170px);
+}
+
+.ai-chat-status {
+    flex-wrap: wrap;
+    border-top: 1px solid #e3d5bf;
+}
+
+.ai-chat-status span {
+    font-size: 0.8rem;
+    color: #7c684f;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid #dcc8a8;
+    border-radius: 999px;
+    padding: 0.25rem 0.6rem;
+}
+
 .chat-conversations {
     border-right: 1px solid #ece1d2;
     display: grid;
@@ -2384,6 +2406,64 @@ input {
     cursor: not-allowed;
 }
 
+.nlp2sql-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.nlp2sql-secondary-button {
+    border: 1px solid #c9baa6;
+    border-radius: 8px;
+    background: #fffaf3;
+    color: #5d5246;
+    font-weight: 600;
+    padding: 0.5rem 0.85rem;
+    cursor: pointer;
+}
+
+.nlp2sql-secondary-button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.nlp2sql-common-queries {
+    display: grid;
+    gap: 0.55rem;
+    background: #fcfaf7;
+    border: 1px solid #e7ddcf;
+    border-radius: 8px;
+    padding: 0.75rem;
+}
+
+.nlp2sql-common-queries p {
+    margin: 0;
+    color: #6a5947;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.nlp2sql-common-queries-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.nlp2sql-chip {
+    border: 1px solid #d9cdbf;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #4b4339;
+    font-size: 0.8rem;
+    line-height: 1.25;
+    padding: 0.35rem 0.7rem;
+    max-width: 100%;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .nlp2sql-result {
     display: flex;
     flex-direction: column;
@@ -2619,6 +2699,10 @@ input {
         flex-direction: column;
     }
 
+    .nlp2sql-actions {
+        flex-direction: column;
+    }
+
     .nlp2sql-charts-grid {
         grid-template-columns: 1fr;
     }
@@ -2710,7 +2794,7 @@ input {
 .consentimentos-row {
   background: #fff; border: 1px solid #eee4d6; border-radius: 14px;
   padding: 0.75rem 0.9rem; display: grid;
-  grid-template-columns: 1.2fr repeat(4, minmax(100px, 1fr));
+    grid-template-columns: 1.2fr repeat(5, minmax(100px, 1fr));
   align-items: start; gap: 0.65rem;
 }
 .consentimentos-main-col { display: grid; gap: 0.2rem; }
@@ -2718,6 +2802,7 @@ input {
 .consentimentos-main-col span { color: #8d7a63; font-size: 0.78rem; }
 .consentimentos-col span { display: block; color: #a09a90; font-size: 0.73rem; }
 .consentimentos-col strong { display: block; color: #4f4337; font-size: 0.82rem; line-height: 1.35; }
+.consentimentos-col .submit-secondary { margin-top: 0.35rem; }
 
 /* ===== COMPLICACOES ===== */
 .complicacoes-table { display: grid; gap: 0.7rem; }
@@ -2793,6 +2878,18 @@ input {
     gap: 0.5rem;
 }
 
+.reports-file-filter {
+    display: grid;
+    gap: 0.3rem;
+    max-width: 360px;
+}
+
+.reports-file-filter span {
+    color: #9f8564;
+    font-weight: 700;
+    font-size: 0.78rem;
+}
+
 .reports-file-head,
 .reports-file-row {
     display: grid;
@@ -2814,6 +2911,11 @@ input {
     border-radius: 12px;
     background: #fff;
     padding: 0.6rem 0.7rem;
+}
+
+.reports-file-row.highlighted {
+    border-color: #b0813f;
+    box-shadow: 0 0 0 2px rgba(176, 129, 63, 0.18);
 }
 
 .reports-file-row strong {

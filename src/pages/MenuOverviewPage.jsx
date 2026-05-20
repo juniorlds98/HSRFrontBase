@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { DashboardTemplate } from "../components/templates/DashboardTemplate";
 import { useAuth } from "../features/auth/AuthContext";
@@ -122,7 +122,7 @@ export function MenuOverviewPage({
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu={activeMenu}
       activeSidebar={activeSidebar}
@@ -193,3 +193,4 @@ export function MenuOverviewPage({
     </DashboardTemplate>
   );
 }
+

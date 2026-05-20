@@ -1,4 +1,4 @@
-import { httpClient } from "./httpClient";
+﻿import { httpClient } from "./httpClient";
 
 export async function fetchAgendamentos() {
   const { data } = await httpClient.get("/api/v1/agendamentos");
@@ -138,3 +138,4 @@ function formatLocalDateKey(date) {
   const day = String(date.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 }
+

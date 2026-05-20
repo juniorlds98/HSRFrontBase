@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MedicosTable } from "../components/organisms/MedicosTable";
 import { DashboardTemplate } from "../components/templates/DashboardTemplate";
@@ -43,7 +43,7 @@ export function MedicosPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="medicos-menu"
       activeSidebar="medicos"
@@ -62,3 +62,4 @@ export function MedicosPage() {
     </DashboardTemplate>
   );
 }
+

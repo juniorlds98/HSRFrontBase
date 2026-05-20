@@ -1,4 +1,4 @@
-export function LeadsKanbanPanel({ kanban, onSelectLead, showHeader = true }) {
+﻿export function LeadsKanbanPanel({ kanban, onSelectLead, showHeader = true }) {
   return (
     <article className="overview-panel">
       {showHeader ? (
@@ -26,3 +26,4 @@ export function LeadsKanbanPanel({ kanban, onSelectLead, showHeader = true }) {
     </article>
   );
 }
+

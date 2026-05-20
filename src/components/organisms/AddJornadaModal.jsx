@@ -1,4 +1,4 @@
-export function AddJornadaModal({ form, references, onChange, onSubmit, onClose, isSubmitting, error }) {
+﻿export function AddJornadaModal({ form, references, onChange, onSubmit, onClose, isSubmitting, error }) {
   const { pacientes = [], etapas = [] } = references;
 
   return (
@@ -44,3 +44,4 @@ export function AddJornadaModal({ form, references, onChange, onSubmit, onClose,
     </div>
   );
 }
+

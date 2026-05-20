@@ -1,4 +1,4 @@
-import hospitalBg from "../../assets/images/fachada HSR.jpg";
+﻿const hospitalBg = encodeURI("/assets/images/fachada HSR.jpg");
 
 export function AuthTemplate({ children }) {
   return (
@@ -8,3 +8,4 @@ export function AuthTemplate({ children }) {
     </main>
   );
 }
+

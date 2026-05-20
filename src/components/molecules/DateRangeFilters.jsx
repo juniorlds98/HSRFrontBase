@@ -1,4 +1,4 @@
-export function DateRangeFilters({ fromDate, toDate, onFromDateChange, onToDateChange, onApply }) {
+﻿export function DateRangeFilters({ fromDate, toDate, onFromDateChange, onToDateChange, onApply }) {
   return (
     <section className="analytics-filters">
       <label>
@@ -15,3 +15,4 @@ export function DateRangeFilters({ fromDate, toDate, onFromDateChange, onToDateC
     </section>
   );
 }
+

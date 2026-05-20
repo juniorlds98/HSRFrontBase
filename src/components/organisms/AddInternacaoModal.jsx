@@ -1,4 +1,4 @@
-export function AddInternacaoModal({ form, references, onChange, onSubmit, onClose, isSubmitting, error }) {
+﻿export function AddInternacaoModal({ form, references, onChange, onSubmit, onClose, isSubmitting, error }) {
   const { pacientes = [], status = [] } = references;
 
   return (
@@ -54,3 +54,4 @@ export function AddInternacaoModal({ form, references, onChange, onSubmit, onClo
     </div>
   );
 }
+

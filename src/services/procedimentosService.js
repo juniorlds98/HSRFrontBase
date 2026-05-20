@@ -1,4 +1,4 @@
-import { httpClient } from './httpClient';
+﻿import { httpClient } from './httpClient';
 
 const LOCAL_KEY = 'hsr_procedimentos_local';
 
@@ -30,3 +30,4 @@ export function buildProcedimentoPayload(form) {
     status: form.status,
   };
 }
+

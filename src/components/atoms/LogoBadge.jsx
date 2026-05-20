@@ -1,4 +1,4 @@
-import logo from "../../assets/images/logo-login.png";
+﻿const logo = "/assets/images/logo-login.png";
 
 export function LogoBadge() {
   return (
@@ -7,3 +7,4 @@ export function LogoBadge() {
     </div>
   );
 }
+

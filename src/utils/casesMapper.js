@@ -1,4 +1,4 @@
-function formatDateTime(dateIso) {
+﻿function formatDateTime(dateIso) {
   if (!dateIso) return "-";
   const date = new Date(dateIso);
   if (Number.isNaN(date.getTime())) return "-";
@@ -60,3 +60,4 @@ export function mapCaseToRow(caseItem, references) {
       .join(" | ") || "-",
   };
 }
+

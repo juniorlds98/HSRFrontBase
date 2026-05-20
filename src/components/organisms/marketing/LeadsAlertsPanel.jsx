@@ -1,4 +1,4 @@
-export function LeadsAlertsPanel({ alerts, showHeader = true }) {
+﻿export function LeadsAlertsPanel({ alerts, showHeader = true }) {
   return (
     <article className="overview-panel">
       {showHeader ? (
@@ -22,3 +22,4 @@ export function LeadsAlertsPanel({ alerts, showHeader = true }) {
     </article>
   );
 }
+

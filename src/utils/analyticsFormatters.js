@@ -1,4 +1,4 @@
-export function formatCurrency(value) {
+﻿export function formatCurrency(value) {
   const amount = Number(value ?? 0);
   return new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -34,3 +34,4 @@ export function formatDateTime(value) {
     minute: "2-digit",
   }).format(date);
 }
+

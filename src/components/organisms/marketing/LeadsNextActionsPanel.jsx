@@ -1,4 +1,4 @@
-export function LeadsNextActionsPanel({ items, formatDateTime, isOverdue, showHeader = true }) {
+﻿export function LeadsNextActionsPanel({ items, formatDateTime, isOverdue, showHeader = true }) {
   return (
     <article className="overview-panel">
       {showHeader ? (
@@ -39,3 +39,4 @@ export function LeadsNextActionsPanel({ items, formatDateTime, isOverdue, showHe
     </article>
   );
 }
+

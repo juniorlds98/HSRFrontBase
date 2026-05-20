@@ -1,4 +1,4 @@
-import axios from "axios";
+﻿import axios from "axios";
 
 const KEYCLOAK_URL = import.meta.env.VITE_KEYCLOAK_URL ?? "http://localhost:8080";
 const KEYCLOAK_REALM = import.meta.env.VITE_KEYCLOAK_REALM ?? "crm-realm";
@@ -98,3 +98,4 @@ export async function logoutFromKeycloak(refreshToken) {
     },
   });
 }
+

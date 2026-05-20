@@ -1,4 +1,4 @@
-import { httpClient } from './httpClient';
+﻿import { httpClient } from './httpClient';
 
 const LOCAL_KEY = 'hsr_cirurgias_local';
 
@@ -54,3 +54,4 @@ export async function fetchCirurgiaReferences() {
     status: results[4].status === 'fulfilled' ? results[4].value : [],
   };
 }
+

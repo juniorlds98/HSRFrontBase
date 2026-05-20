@@ -1,4 +1,4 @@
-export function AddFuncionarioModal({ form, references, onChange, onSubmit, onClose, isSubmitting, error }) {
+﻿export function AddFuncionarioModal({ form, references, onChange, onSubmit, onClose, isSubmitting, error }) {
   const { cargos = [] } = references;
 
   return (
@@ -44,3 +44,4 @@ export function AddFuncionarioModal({ form, references, onChange, onSubmit, onCl
     </div>
   );
 }
+

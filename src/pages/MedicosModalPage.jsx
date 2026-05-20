@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AddMedicoModal } from "../components/organisms/AddMedicoModal";
 import { MedicosTable } from "../components/organisms/MedicosTable";
@@ -66,7 +66,7 @@ export function MedicosModalPage() {
       setMedicos((c) => [mapMedicoToRow(created), ...c]);
       navigate("/medicos", { replace: true });
     } catch (err) {
-      setSubmitError(err?.message || "Nao foi possivel cadastrar o medico.");
+      setSubmitError(err?.message || "Não foi possível cadastrar o medico.");
     } finally {
       setIsSubmitting(false);
     }
@@ -79,7 +79,7 @@ export function MedicosModalPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="medicos-menu"
       activeSidebar="medicos"
@@ -107,3 +107,5 @@ export function MedicosModalPage() {
     </DashboardTemplate>
   );
 }
+
+

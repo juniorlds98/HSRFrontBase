@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AccordionPanel } from "../components/molecules/AccordionPanel";
 import { DateRangeFilters } from "../components/molecules/DateRangeFilters";
@@ -171,7 +171,7 @@ export function MarketingPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="marketing"
       activeSidebar="relatorios"
@@ -280,3 +280,4 @@ export function MarketingPage() {
     </DashboardTemplate>
   );
 }
+

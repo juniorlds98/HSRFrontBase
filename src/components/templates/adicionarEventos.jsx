@@ -1,4 +1,4 @@
-<div className="w-[608px] h-[892px] relative">
+﻿<div className="w-[608px] h-[892px] relative">
   <div className="w-[608px] h-[892px] left-0 top-0 absolute bg-white rounded-3xl shadow-[0px_6px_58px_0px_rgba(121,145,173,0.20)]" />
   <div className="w-[488px] h-20 left-[60px] top-[119px] absolute">
     <div className="w-32 h-12 left-0 top-[32px] absolute">
@@ -7,7 +7,7 @@
         <div className="w-6 h-6 left-0 top-0 absolute" />
         <div className="w-2.5 h-2.5 left-[7px] top-[7px] absolute bg-stone-500 rounded-[5px]" />
       </div>
-      <div className="left-[49px] top-[14px] absolute justify-start text-stone-500 text-sm font-extrabold font-['Outfit']">Operação</div>
+      <div className="left-[49px] top-[14px] absolute justify-start text-stone-500 text-sm font-extrabold font-['Outfit']">OperaÃ§Ã£o</div>
     </div>
     <div className="left-[6px] top-0 absolute justify-start text-orange-400 text-sm font-extrabold font-['Outfit']">Tipo de evento</div>
     <div className="w-36 h-12 left-[150px] top-[32px] absolute">
@@ -275,7 +275,7 @@
       <div className="w-6 h-6 left-0 top-0 absolute" />
       <div className="w-4 h-3 left-[4px] top-[6px] absolute bg-stone-500" />
     </div>
-    <div className="left-[199px] top-[34px] absolute text-center justify-start text-stone-500 text-base font-medium font-['Outfit']">Março, 2026</div>
+    <div className="left-[199px] top-[34px] absolute text-center justify-start text-stone-500 text-base font-medium font-['Outfit']">MarÃ§o, 2026</div>
   </div>
   <div className="w-11 h-11 left-[60px] top-[791px] absolute bg-red-200 rounded-2xl" />
   <div className="w-6 h-6 left-[71px] top-[800px] absolute">
@@ -300,7 +300,7 @@
       </div>
     </div>
   </div>
-  <div className="left-[60px] top-[59px] absolute justify-start text-stone-500 text-2xl font-semibold font-['Outfit']">Escreva a descrição</div>
+  <div className="left-[60px] top-[59px] absolute justify-start text-stone-500 text-2xl font-semibold font-['Outfit']">Escreva a descriÃ§Ã£o</div>
   <div className="w-11 h-11 left-[534px] top-[30px] absolute bg-red-200 rounded-2xl" />
   <div className="w-6 h-6 left-[544px] top-[40px] absolute">
     <div className="w-6 h-6 left-0 top-0 absolute" />

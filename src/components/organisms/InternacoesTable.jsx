@@ -1,4 +1,4 @@
-export function InternacoesTable({ internacoes }) {
+﻿export function InternacoesTable({ internacoes }) {
   if (!internacoes.length) return <p className="loading">Nenhuma internacao encontrada.</p>;
 
   return (
@@ -18,3 +18,4 @@ export function InternacoesTable({ internacoes }) {
     </div>
   );
 }
+

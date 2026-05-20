@@ -1,4 +1,4 @@
-export function ComplicacoesTable({ complicacoes }) {
+﻿export function ComplicacoesTable({ complicacoes }) {
   if (!complicacoes.length) return <p className="loading">Nenhuma complicacao encontrada.</p>;
 
   return (
@@ -16,3 +16,4 @@ export function ComplicacoesTable({ complicacoes }) {
     </div>
   );
 }
+

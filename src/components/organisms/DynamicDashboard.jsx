@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+﻿import { useEffect, useState, useCallback } from "react";
 import { DynamicWidget } from "./DynamicDashboardWidgets";
 import {
   fetchDynamicDashboardConfig,
@@ -7,10 +7,10 @@ import {
 import { canAccessScreen } from "../../services/permissionService";
 
 /**
- * Dashboard Dinâmico
- * - Renderiza widgets configuráveis do backend
- * - Validação rigorosa de segurança
- * - Auto-refresh configurável
+ * Dashboard DinÃ¢mico
+ * - Renderiza widgets configurÃ¡veis do backend
+ * - ValidaÃ§Ã£o rigorosa de seguranÃ§a
+ * - Auto-refresh configurÃ¡vel
  */
 export function DynamicDashboard() {
   const [widgets, setWidgets] = useState([]);
@@ -19,11 +19,11 @@ export function DynamicDashboard() {
   const [refreshInterval, setRefreshInterval] = useState(300000); // 5 min
   const [lastUpdated, setLastUpdated] = useState(null);
 
-  // Verificar permissão
+  // Verificar permissÃ£o
   const hasPermission = canAccessScreen("relatorio");
 
   /**
-   * Carrega configuração do dashboard
+   * Carrega configuraÃ§Ã£o do dashboard
    */
   const loadDashboard = useCallback(async () => {
     try {
@@ -38,7 +38,7 @@ export function DynamicDashboard() {
     } catch (err) {
       console.error("Erro ao carregar dashboard:", err);
       setError(
-        "Não foi possível carregar o dashboard. Tente novamente em alguns momentos."
+        "NÃ£o foi possÃ­vel carregar o dashboard. Tente novamente em alguns momentos."
       );
       setWidgets([]);
     } finally {
@@ -66,13 +66,13 @@ export function DynamicDashboard() {
     return () => clearInterval(interval);
   }, [refreshInterval, loadDashboard, hasPermission]);
 
-  // Sem permissão
+  // Sem permissÃ£o
   if (!hasPermission) {
     return (
       <div className="dynamic-dashboard restricted">
         <div className="restricted-message">
-          <span>🔒</span>
-          <p>Você não tem permissão para acessar o dashboard dinâmico.</p>
+          <span>ðŸ”’</span>
+          <p>VocÃª nÃ£o tem permissÃ£o para acessar o dashboard dinÃ¢mico.</p>
         </div>
       </div>
     );
@@ -95,7 +95,7 @@ export function DynamicDashboard() {
     return (
       <div className="dynamic-dashboard error">
         <div className="error-message">
-          <span>⚠️</span>
+          <span>âš ï¸</span>
           <p>{error}</p>
           <button onClick={loadDashboard} className="retry-button">
             Tentar Novamente
@@ -110,14 +110,14 @@ export function DynamicDashboard() {
     return (
       <div className="dynamic-dashboard empty">
         <div className="empty-message">
-          <span>📊</span>
+          <span>ðŸ“Š</span>
           <p>Dashboard vazio. Configure widgets no backend.</p>
         </div>
       </div>
     );
   }
 
-  // Agrupar widgets por linhas (máx 3 por linha)
+  // Agrupar widgets por linhas (mÃ¡x 3 por linha)
   const widgetRows = [];
   for (let i = 0; i < widgets.length; i += 3) {
     widgetRows.push(widgets.slice(i, i + 3));
@@ -126,7 +126,7 @@ export function DynamicDashboard() {
   return (
     <div className="dynamic-dashboard">
       <div className="dashboard-header">
-        <h2>Dashboard Dinâmico</h2>
+        <h2>Dashboard DinÃ¢mico</h2>
         {lastUpdated && (
           <p className="last-updated">
             Atualizado em:{" "}
@@ -172,3 +172,4 @@ export function DynamicDashboard() {
     </div>
   );
 }
+

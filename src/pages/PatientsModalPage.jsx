@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AddPatientModal } from "../components/organisms/AddPatientModal";
 import { PatientsTable } from "../components/organisms/PatientsTable";
@@ -88,7 +88,7 @@ export function PatientsModalPage() {
       setForm(initialForm);
       navigate("/pacientes", { replace: true });
     } catch {
-      setSubmitError("Nao foi possivel criar o paciente. Verifique os dados e tente novamente.");
+      setSubmitError("Não foi possível criar o paciente. Verifique os dados e tente novamente.");
     } finally {
       setIsSubmitting(false);
     }
@@ -101,7 +101,7 @@ export function PatientsModalPage() {
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="pacientes-menu"
       activeSidebar="pacientes"
@@ -152,3 +152,5 @@ export function PatientsModalPage() {
     </DashboardTemplate>
   );
 }
+
+

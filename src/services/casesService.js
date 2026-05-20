@@ -1,4 +1,4 @@
-import { httpClient } from "./httpClient";
+﻿import { httpClient } from "./httpClient";
 
 const CASES_ENDPOINT = "/api/v1/casos";
 const LOCAL_CASES_KEY = "hsr_cases_local";
@@ -143,3 +143,4 @@ export async function fetchCaseReferences() {
     atendimentos: settledArray(atendimentosRes),
   };
 }
+

@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { DateRangeFilters } from "../components/molecules/DateRangeFilters";
 import { DashboardTemplate } from "../components/templates/DashboardTemplate";
@@ -45,6 +46,7 @@ function formatDate(value) {
 
 export function RelatoriosPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { user, logout } = useAuth();
 
   const today = new Date();
@@ -56,6 +58,8 @@ export function RelatoriosPage() {
   const [csvFeedback, setCsvFeedback] = useState("");
 
   const [files, setFiles] = useState([]);
+  const [fileQuery, setFileQuery] = useState("");
+  const [selectedFilePath, setSelectedFilePath] = useState(location?.state?.selectedFilePath ?? "");
   const [isLoadingFiles, setIsLoadingFiles] = useState(true);
   const [filesFeedback, setFilesFeedback] = useState("");
   const [uploadFile, setUploadFile] = useState(null);
@@ -89,6 +93,20 @@ export function RelatoriosPage() {
       mounted = false;
     };
   }, []);
+
+  useEffect(() => {
+    if (!location?.state) {
+      return;
+    }
+
+    const targetPath = String(location.state.selectedFilePath || "");
+    const targetName = String(location.state.selectedFileName || "");
+
+    setSelectedFilePath(targetPath);
+    if (targetName) {
+      setFileQuery(targetName);
+    }
+  }, [location]);
 
   async function handleLogout() {
     await logout();
@@ -155,18 +173,31 @@ export function RelatoriosPage() {
     }
   }
 
+  const filteredFiles = useMemo(() => {
+    const normalizedQuery = fileQuery.trim().toLowerCase();
+    if (!normalizedQuery) {
+      return files;
+    }
+
+    return files.filter((item) => {
+      const name = String(item.name ?? "").toLowerCase();
+      const path = String(item.path ?? "").toLowerCase();
+      return name.includes(normalizedQuery) || path.includes(normalizedQuery);
+    });
+  }, [files, fileQuery]);
+
   const totalBytes = useMemo(() => files.reduce((sum, item) => sum + Number(item.size ?? 0), 0), [files]);
 
   return (
     <DashboardTemplate
-      userName={user?.name ?? user?.username ?? "Usuario"}
+      userName={user?.name ?? user?.username ?? "Usuário"}
       onLogout={handleLogout}
       activeMenu="relatorios"
       activeSidebar="relatorios"
       searchValue=""
     >
       <section className="screen-heading-row">
-        <h1>Relatorios e MinIO</h1>
+        <h1>Relatórios</h1>
       </section>
 
       <DateRangeFilters
@@ -178,7 +209,7 @@ export function RelatoriosPage() {
       />
 
       <p className="services-mode-indicator">
-        Gere CSVs de leads e financeiro por periodo e hospede arquivos adicionais no MinIO.
+        Gere CSVs de leads e financeiro por período e hospede arquivos adicionais.
       </p>
 
       <section className="overview-cards-grid">
@@ -187,13 +218,13 @@ export function RelatoriosPage() {
           <strong>{isLoadingFiles ? "..." : files.length}</strong>
         </article>
         <article className="overview-card">
-          <span>Espaco total</span>
+          <span>Espaço total</span>
           <strong>{isLoadingFiles ? "..." : formatFileSize(totalBytes)}</strong>
         </article>
         <article className="overview-card">
-          <span>Periodo ativo</span>
+          <span>Período ativo</span>
           <strong>
-            {filters.fromDate || "-"} ate {filters.toDate || "-"}
+            {filters.fromDate || "-"} até {filters.toDate || "-"}
           </strong>
         </article>
       </section>
@@ -240,6 +271,21 @@ export function RelatoriosPage() {
           <span>Bucket MinIO</span>
         </div>
 
+        {selectedFilePath ? (
+          <p className="services-feedback">Arquivo vinculado selecionado: {selectedFilePath}</p>
+        ) : null}
+
+        <label className="reports-file-filter">
+          <span>Buscar arquivo</span>
+          <input
+            type="search"
+            className="patient-input"
+            value={fileQuery}
+            onChange={(event) => setFileQuery(event.target.value)}
+            placeholder="Filtrar por nome ou caminho"
+          />
+        </label>
+
         <form className="reports-upload-form" onSubmit={handleUpload}>
           <label>
             <span>Pasta</span>
@@ -278,8 +324,11 @@ export function RelatoriosPage() {
               <span>Acao</span>
             </div>
 
-            {files.map((item) => (
-              <article key={item.id} className="reports-file-row">
+            {filteredFiles.map((item) => (
+              <article
+                key={item.id}
+                className={`reports-file-row ${selectedFilePath && item.path === selectedFilePath ? "highlighted" : ""}`}
+              >
                 <strong>{item.name}</strong>
                 <span>{formatFileSize(item.size)}</span>
                 <span>{formatDate(item.uploadedAt)}</span>
@@ -294,7 +343,7 @@ export function RelatoriosPage() {
               </article>
             ))}
 
-            {files.length === 0 ? <p className="loading">Nenhum arquivo hospedado ainda.</p> : null}
+            {filteredFiles.length === 0 ? <p className="loading">Nenhum arquivo encontrado para o filtro informado.</p> : null}
           </div>
         ) : null}
       </section>

@@ -1,4 +1,4 @@
-import { httpClient } from './httpClient';
+﻿import { httpClient } from './httpClient';
 
 const LOCAL_KEY = 'hsr_internacoes_local';
 
@@ -45,3 +45,4 @@ export async function fetchInternacaoReferences() {
     status: results[1].status === 'fulfilled' ? results[1].value : [],
   };
 }
+
