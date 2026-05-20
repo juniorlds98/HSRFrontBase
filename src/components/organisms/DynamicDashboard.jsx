@@ -110,7 +110,7 @@ export function DynamicDashboard() {
     return (
       <div className="dynamic-dashboard empty">
         <div className="empty-message">
-          <span>ðŸ“Š</span>
+          <span>📊</span>
           <p>Dashboard vazio. Configure widgets no backend.</p>
         </div>
       </div>
